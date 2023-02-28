@@ -1,4 +1,4 @@
-export * from "./Topics";
+export * from "./topics";
 export * from "./user";
 export * from "./album";
 export * from "./guest";

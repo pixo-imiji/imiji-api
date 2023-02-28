@@ -1,6 +1,6 @@
 {
-  "name": "imiji-api",
-  "version": "v0.0.3",
+  "name": "@imiji/api",
+  "version": "v0.0.5",
   "dependencies": {
   }
 }

@@ -1,7 +1,13 @@
 {
   "name": "@imiji/api",
-  "version": "v0.0.8",
-  "main": "index.ts",
-  "dependencies": {
+  "version": "0.0.9",
+  "description": "",
+  "author": "Anas Saber",
+  "scripts": {
+    "fix": "rm -rf node_modules && rm package-lock.json && npm install",
+    "build": "rm -rf dist && tsc -p tsconfig.build.json"
+  },
+  "devDependencies": {
+    "typescript": "^4.9.5"
   }
 }

@@ -7,7 +7,7 @@ export interface InviteForAlbumCreated extends IEvent {
   email: string;
 }
 
-export interface AcceptInviteForAlbum extends IEvent {
+export interface InviteForAlbumAccepted extends IEvent {
   inviteId: string;
 }
 
@@ -35,7 +35,7 @@ export class InviteForAlbumCreatedEvent implements InviteForAlbumCreated {
   }
 }
 
-export class AcceptInviteForAlbumEvent implements AcceptInviteForAlbum {
+export class AcceptInviteForAlbumEvent implements InviteForAlbumAccepted {
   authorId: string;
   eventName: string;
   inviteId: string;

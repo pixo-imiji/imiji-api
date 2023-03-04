@@ -1,7 +1,8 @@
 {
   "name": "@imiji/api",
-  "version": "1.0.0-SNAPSHOT.8",
+  "version": "1.0.0-SNAPSHOT.0",
   "description": "",
+  "private": false,
   "author": "Anas Saber",
   "scripts": {
     "fix": "rm -rf node_modules && rm package-lock.json && npm install",

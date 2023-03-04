@@ -1,1 +1,11 @@
-export const UserEvents = "user.events";
+export const UserEvents = 'user.events';
+export const AlbumEvents = 'album.events';
+export const GuestEvents = 'guest.events';
+export const PackageEvents = 'package.events';
+export const MediaEvents = 'media.events';
+export const InviteEvents = 'invite.events';
+export const UploaderEvents = 'uploader.events';
+export const ResizerEvents = 'resizer.events';
+export const NotificationEvents = 'notification.events';
+export const MailerEvents = 'mailer.events';
+export const RoleEvents = 'role.events';

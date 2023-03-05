@@ -3,5 +3,5 @@
 ciBuildModule {
     scmUrl = 'git@github.com:pixo-imiji/imiji-api.git'
     moduleName = 'imiji-api'
-    deployable = true
+    deployable = false
 }

@@ -13,7 +13,7 @@ const newSnapshotVersion = fixVersion + m + incrementSnapshot;
     await run(`npm run build`);
     await run(`npm version ${newSnapshotVersion}`);
     await run("git push");
-    await run(`npm publish --access public`);
+    // await run(`npm publish --access public`);
     console.log("done");
   } catch (err) {
     console.error(err);

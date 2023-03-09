@@ -1,6 +1,5 @@
 @Library('imiji-jenkins-lib')_
 
-ciBuildModule {
+releaseModule {
     scmUrl = 'git@github.com:pixo-imiji/imiji-api.git'
-    moduleName = 'imiji-server-api'
 }

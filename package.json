@@ -2,7 +2,6 @@
   "name": "imiji-server-api",
   "version": "1.0.0-SNAPSHOT",
   "description": "",
-  "private": false,
   "author": "Anas Saber",
   "scripts": {
     "fix": "rm -rf node_modules && rm package-lock.json && npm install",

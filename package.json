@@ -3,6 +3,7 @@
   "version": "1.0.0-SNAPSHOT",
   "description": "",
   "author": "Anas Saber",
+  "main": "dist/index.js",
   "scripts": {
     "fix": "rm -rf node_modules && rm package-lock.json && npm install",
     "build": "rm -rf dist && tsc -p tsconfig.build.json"

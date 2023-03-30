@@ -1,5 +1,5 @@
-import { IEvent } from "../event/IEvent";
-import { AlbumType } from "./album.type";
+import { IEvent } from '../event';
+import { AlbumType } from './album.type';
 
 export interface AlbumCreated extends IEvent {
   albumId: string;
@@ -39,7 +39,7 @@ export class AlbumCreatedEvent implements AlbumCreated {
     authorId: string,
     name: string,
     type: AlbumType,
-    date: number
+    date: number,
   ) {
     this.eventName = AlbumCreatedEvent.name;
     this.albumId = id;
@@ -63,7 +63,7 @@ export class AlbumChapterCreatedEvent implements AlbumChapterCreated {
     authorId: string,
     name: string,
     albumId: string,
-    isPublic: boolean
+    isPublic: boolean,
   ) {
     this.eventName = AlbumChapterCreatedEvent.name;
     this.authorId = authorId;
@@ -100,7 +100,7 @@ export class AlbumUpdatedEvent implements AlbumUpdated {
     albumId: string,
     name: string,
     type: AlbumType,
-    date: number
+    date: number,
   ) {
     this.eventName = AlbumUpdatedEvent.name;
     this.authorId = authorId;

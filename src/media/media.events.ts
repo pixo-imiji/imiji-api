@@ -1,5 +1,5 @@
-import { IEvent } from "../event/IEvent";
-import { MediaType } from "./media.type";
+import { IEvent } from '../event/IEvent';
+import { MediaType } from './media.type';
 
 export interface MediaUploaded extends IEvent {
   mediaId: string;
@@ -11,6 +11,7 @@ export interface MediaUploaded extends IEvent {
 
 export interface MediaRemoved extends IEvent {
   mediaId: string;
+  albumId: string;
 }
 
 export class MediaUploadedEvent implements MediaUploaded {
@@ -28,7 +29,7 @@ export class MediaUploadedEvent implements MediaUploaded {
     albumId: string,
     chapterId: string,
     type: MediaType,
-    s3Id: string
+    s3Id: string,
   ) {
     this.eventName = MediaUploadedEvent.name;
     this.authorId = authorId;
@@ -44,10 +45,12 @@ export class MediaRemovedEvent implements MediaRemoved {
   authorId: string;
   eventName: string;
   mediaId: string;
+  albumId: string;
 
-  constructor(id: string, authorId: string) {
+  constructor(id: string, authorId: string, albumId: string) {
     this.eventName = MediaRemovedEvent.name;
     this.authorId = authorId;
     this.mediaId = id;
+    this.albumId = albumId;
   }
 }

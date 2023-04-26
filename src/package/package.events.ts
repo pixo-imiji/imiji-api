@@ -1,4 +1,4 @@
-import { IEvent } from "../event/IEvent";
+import { IEvent } from '../event';
 
 export interface PackageCreated extends IEvent {
   packageId: string;
@@ -35,7 +35,7 @@ export class PackageCreatedEvent implements PackageCreated {
     name: string,
     mediaLimit: number,
     price: number,
-    years: number
+    years: number,
   ) {
     this.eventName = PackageCreatedEvent.name;
     this.authorId = authorId;
@@ -62,7 +62,7 @@ export class PackageUpdatedEvent implements PackageUpdated {
     name: string,
     mediaLimit: number,
     price: number,
-    years: number
+    years: number,
   ) {
     this.eventName = PackageUpdatedEvent.name;
     this.authorId = authorId;

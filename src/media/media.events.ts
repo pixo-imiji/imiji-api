@@ -1,5 +1,6 @@
-import { IEvent } from '../event/IEvent';
+import { IEvent } from '../event';
 import { MediaType } from './media.type';
+import { MediaResizeType } from './media.resize.type';
 
 export interface MediaUploaded extends IEvent {
   mediaId: string;
@@ -12,6 +13,13 @@ export interface MediaUploaded extends IEvent {
 export interface MediaRemoved extends IEvent {
   mediaId: string;
   albumId: string;
+}
+
+export interface MediaResized extends IEvent {
+  mediaId: string;
+  albumId: string;
+  s3Id: string;
+  type: MediaResizeType;
 }
 
 export class MediaUploadedEvent implements MediaUploaded {
@@ -52,5 +60,29 @@ export class MediaRemovedEvent implements MediaRemoved {
     this.authorId = authorId;
     this.mediaId = id;
     this.albumId = albumId;
+  }
+}
+
+export class MediaResizedEvent implements MediaResized {
+  albumId: string;
+  authorId: string;
+  eventName: string;
+  mediaId: string;
+  s3Id: string;
+  type: MediaResizeType;
+
+  constructor(
+    id: string,
+    authorId: string,
+    albumId: string,
+    s3Id: string,
+    type: MediaResizeType,
+  ) {
+    this.mediaId = id;
+    this.authorId = authorId;
+    this.eventName = MediaResizedEvent.name;
+    this.albumId = albumId;
+    this.s3Id = s3Id;
+    this.type = type;
   }
 }

@@ -1,10 +1,12 @@
-import { IEvent } from "../event/IEvent";
+import { IEvent } from '../event';
+import { InviteType } from './invite.type';
 
 export interface InviteForAlbumCreated extends IEvent {
   inviteId: string;
   userId: string;
   albumId: string;
   email: string;
+  type: InviteType;
 }
 
 export interface InviteForAlbumAccepted extends IEvent {
@@ -18,13 +20,15 @@ export class InviteForAlbumCreatedEvent implements InviteForAlbumCreated {
   eventName: string;
   inviteId: string;
   userId: string;
+  type: InviteType;
 
   constructor(
     id: string,
     authorId: string,
     albumId: string,
     userId: string,
-    email: string
+    email: string,
+    type: InviteType,
   ) {
     this.eventName = InviteForAlbumCreatedEvent.name;
     this.authorId = authorId;
@@ -32,6 +36,7 @@ export class InviteForAlbumCreatedEvent implements InviteForAlbumCreated {
     this.albumId = albumId;
     this.userId = userId;
     this.email = email;
+    this.type = type;
   }
 }
 

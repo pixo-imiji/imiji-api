@@ -1,3 +1,5 @@
+import { GuestRole } from './guest.role';
+
 export interface AddGuest {
   userId: string;
   albumId: string;
@@ -12,5 +14,5 @@ export interface RemoveGuest {
 
 export interface ChangeGuestRole {
   guestId: string;
-  role: string;
+  role: GuestRole;
 }

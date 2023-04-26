@@ -15,3 +15,12 @@ export interface SendResetPasswordMail {
   email: string;
   resetPasswordId: string;
 }
+
+export interface SendRestPasswordConfirmMail {
+  email: string;
+}
+
+export interface SendInviteMail {
+  email: string;
+  inviteId: string;
+}

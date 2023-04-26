@@ -1,3 +1,5 @@
+import { MediaResizeType } from './media.resize.type';
+
 export interface UploadMedia {
   file: File;
   type: string;
@@ -7,4 +9,9 @@ export interface UploadMedia {
 
 export interface RemoveMedia {
   mediaId: string;
+}
+
+export interface ResizeMedia {
+  mediaId: string;
+  type: MediaResizeType;
 }

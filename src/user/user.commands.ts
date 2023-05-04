@@ -1,8 +1,10 @@
+import { Locale } from './locale';
+
 export interface UserRegister {
   email: string;
   password: string;
   repeatPassword: string;
-  locale: string;
+  locale: Locale;
 }
 
 export interface UserLogin {
@@ -12,7 +14,7 @@ export interface UserLogin {
 
 export interface UserUpdate {
   userId: string;
-  locale: string;
+  locale: Locale;
 }
 
 export interface UserValidate {

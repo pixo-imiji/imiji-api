@@ -1,14 +1,16 @@
-import { IEvent } from "../event/IEvent";
+import { IEvent } from '../event';
+import { Locale } from './locale';
 
 export type UserLoggedIn = IEvent;
 
 export interface UserRegistered extends IEvent {
   email: string;
   validateId: string;
+  locale: Locale;
 }
 
 export interface UserUpdated extends IEvent {
-  locale: string;
+  locale: Locale;
 }
 
 export interface UserValidated extends IEvent {
@@ -31,12 +33,14 @@ export class UserRegisteredEvent implements UserRegistered {
   email: string;
   userId: string;
   validateId: string;
+  locale: Locale;
 
-  constructor(id: string, email: string, validateId: string) {
+  constructor(id: string, email: string, locale: Locale, validateId: string) {
     this.eventName = UserRegisteredEvent.name;
     this.authorId = id;
     this.userId = id;
     this.email = email;
+    this.locale = locale;
     this.validateId = validateId;
   }
 }
@@ -44,9 +48,9 @@ export class UserRegisteredEvent implements UserRegistered {
 export class UserUpdatedEvent implements UserUpdated {
   eventName: string;
   authorId: string;
-  locale: string;
+  locale: Locale;
 
-  constructor(authorId: string, locale: string) {
+  constructor(authorId: string, locale: Locale) {
     this.eventName = UserUpdatedEvent.name;
     this.authorId = authorId;
     this.locale = locale;

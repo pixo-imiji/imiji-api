@@ -11,6 +11,7 @@ export interface ChapterUpdated extends ChapterCreated {}
 
 export interface ChapterRemoved extends IEvent {
   chapterId: string;
+  albumId: string;
 }
 
 export class ChapterCreatedEvent implements ChapterCreated, IEvent {
@@ -41,12 +42,14 @@ export class ChapterUpdatedEvent extends ChapterCreatedEvent {}
 
 export class ChapterRemovedEvent implements ChapterRemoved, IEvent {
   authorId: string;
+  albumId: string;
   chapterId: string;
   eventName: string;
 
-  constructor(id: string, authorId: string) {
+  constructor(id: string, authorId: string, albumId: string) {
     this.authorId = authorId;
     this.eventName = ChapterRemovedEvent.name;
     this.chapterId = id;
+    this.albumId = albumId;
   }
 }

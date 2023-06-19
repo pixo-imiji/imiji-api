@@ -20,6 +20,11 @@ export interface BuyRequestCreated extends IEvent {
   packageId: string;
 }
 
+export interface PackageBought extends IEvent {
+  packageId: string;
+  userId: string;
+}
+
 export class PackageCreatedEvent implements PackageCreated {
   authorId: string;
   eventName: string;
@@ -83,5 +88,19 @@ export class BuyRequestCreatedEvent implements BuyRequestCreated {
     this.eventName = BuyRequestCreatedEvent.name;
     this.authorId = authorId;
     this.packageId = id;
+  }
+}
+
+export class PackageBoughtEvent implements PackageBought {
+  authorId: string;
+  eventName: string;
+  packageId: string;
+  userId: string;
+
+  constructor(id: string, authorId: string, userId: string) {
+    this.packageId = id;
+    this.authorId = authorId;
+    this.eventName = PackageBoughtEvent.name;
+    this.userId = userId;
   }
 }

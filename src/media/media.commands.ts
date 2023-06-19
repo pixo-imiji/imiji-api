@@ -23,3 +23,9 @@ export interface ResizeMedia {
   mediaId: string;
   type: MediaResizeType;
 }
+
+export interface MediaAction {
+  mediaId: string;
+  metadata: string;
+  action: MediaAction;
+}

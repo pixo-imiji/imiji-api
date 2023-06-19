@@ -26,6 +26,7 @@ export interface MediaAlbumResized extends IEvent {
 }
 
 export interface MediaDidAction extends IEvent {
+  albumId: string;
   mediaId: string;
   action: MediaAction;
 }
@@ -128,11 +129,18 @@ export class MediaDidActionEvent implements MediaDidAction {
   action: MediaAction;
   authorId: string;
   eventName: string;
+  albumId: string;
   mediaId: string;
 
-  constructor(id: string, authorId: string, action: MediaAction) {
+  constructor(
+    id: string,
+    authorId: string,
+    albumId: string,
+    action: MediaAction,
+  ) {
     this.mediaId = id;
     this.authorId = authorId;
+    this.albumId = albumId;
     this.eventName = MediaDidActionEvent.name;
     this.action = action;
   }

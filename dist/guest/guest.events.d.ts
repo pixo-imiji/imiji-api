@@ -1,5 +1,5 @@
-import { IEvent } from "../event/IEvent";
-import { GuestRole } from "./guest.role";
+import { IEvent } from '../event';
+import { GuestRole } from './guest.role';
 export interface GuestAdded extends IEvent {
     guestId: string;
     albumId: string;

@@ -1,25 +1,32 @@
 import { IEvent } from '../event';
 import { MediaType } from './media.type';
-import { MediaResizeType } from './media.resize.type';
+import { MediaFormat } from './media.format';
 
 export interface MediaUploaded extends IEvent {
   mediaId: string;
   type: MediaType;
   albumId: string;
   chapterId: string;
-  s3Id: string;
+  format: MediaFormat;
 }
 
 export interface MediaRemoved extends IEvent {
   mediaId: string;
+  type: MediaType;
   albumId: string;
+  chapterId: string;
+  formats: MediaFormat[];
 }
 
-export interface MediaResized extends IEvent {
+export interface MediaAlbumResized extends IEvent {
   mediaId: string;
   albumId: string;
-  s3Id: string;
-  type: MediaResizeType;
+  format: MediaFormat;
+}
+
+export interface MediaAvatarResized extends IEvent {
+  id: string;
+  format: MediaFormat;
 }
 
 export class MediaUploadedEvent implements MediaUploaded {
@@ -27,7 +34,7 @@ export class MediaUploadedEvent implements MediaUploaded {
   chapterId: string;
   mediaId: string;
   type: MediaType;
-  s3Id: string;
+  format: MediaFormat;
   authorId: string;
   eventName: string;
 
@@ -37,7 +44,7 @@ export class MediaUploadedEvent implements MediaUploaded {
     albumId: string,
     chapterId: string,
     type: MediaType,
-    s3Id: string,
+    format: MediaFormat,
   ) {
     this.eventName = MediaUploadedEvent.name;
     this.authorId = authorId;
@@ -45,7 +52,7 @@ export class MediaUploadedEvent implements MediaUploaded {
     this.albumId = albumId;
     this.chapterId = chapterId;
     this.type = type;
-    this.s3Id = s3Id;
+    this.format = format;
   }
 }
 
@@ -54,35 +61,59 @@ export class MediaRemovedEvent implements MediaRemoved {
   eventName: string;
   mediaId: string;
   albumId: string;
-
-  constructor(id: string, authorId: string, albumId: string) {
-    this.eventName = MediaRemovedEvent.name;
-    this.authorId = authorId;
-    this.mediaId = id;
-    this.albumId = albumId;
-  }
-}
-
-export class MediaResizedEvent implements MediaResized {
-  albumId: string;
-  authorId: string;
-  eventName: string;
-  mediaId: string;
-  s3Id: string;
-  type: MediaResizeType;
+  chapterId: string;
+  type: MediaType;
+  formats: MediaFormat[];
 
   constructor(
     id: string,
     authorId: string,
     albumId: string,
-    s3Id: string,
-    type: MediaResizeType,
+    chapterId: string,
+    type: MediaType,
+    formats: MediaFormat[],
+  ) {
+    this.eventName = MediaRemovedEvent.name;
+    this.authorId = authorId;
+    this.mediaId = id;
+    this.albumId = albumId;
+    this.chapterId = chapterId;
+    this.type = type;
+    this.formats = formats;
+  }
+}
+
+export class MediaAlbumResizedEvent implements MediaAlbumResized {
+  albumId: string;
+  authorId: string;
+  eventName: string;
+  mediaId: string;
+  format: MediaFormat;
+
+  constructor(
+    id: string,
+    authorId: string,
+    albumId: string,
+    format: MediaFormat,
   ) {
     this.mediaId = id;
     this.authorId = authorId;
-    this.eventName = MediaResizedEvent.name;
+    this.eventName = MediaAlbumResizedEvent.name;
     this.albumId = albumId;
-    this.s3Id = s3Id;
-    this.type = type;
+    this.format = format;
+  }
+}
+
+export class MediaAvatarResizedEvent implements MediaAvatarResized {
+  authorId: string;
+  eventName: string;
+  format: MediaFormat;
+  id: string;
+
+  constructor(id: string, authorId: string, format: MediaFormat) {
+    this.id = id;
+    this.authorId = authorId;
+    this.format = format;
+    this.eventName = MediaAvatarResizedEvent.name;
   }
 }

@@ -17,3 +17,5 @@ Object.defineProperty(exports, "__esModule", { value: true });
 __exportStar(require("./user.token"), exports);
 __exportStar(require("./user.events"), exports);
 __exportStar(require("./user.commands"), exports);
+__exportStar(require("./user.value"), exports);
+__exportStar(require("./auth.service"), exports);

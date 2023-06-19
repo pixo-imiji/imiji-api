@@ -1,4 +1,4 @@
-import { IEvent } from "../event/IEvent";
+import { IEvent } from '../event';
 export interface PackageCreated extends IEvent {
     packageId: string;
     name: string;

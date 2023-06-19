@@ -1,5 +1,6 @@
 export declare enum GuestRole {
-    INVITED = 0,
-    GUEST = 1,
-    MANAGER = 2
+    ADDED = "ADDED",
+    INVITED = "INVITED",
+    GUEST = "GUEST",
+    MANAGER = "MANAGER"
 }

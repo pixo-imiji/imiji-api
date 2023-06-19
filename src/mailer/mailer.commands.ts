@@ -6,7 +6,8 @@ export interface SendValidateAccountMail {
 export interface SendInvoicePackageMail {
   email: string;
   packageId: string;
-  price: number;
+  price: string;
+  currency: string;
   mediaLimit: number;
   years: number;
 }

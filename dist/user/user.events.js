@@ -9,11 +9,12 @@ class UserLoggedInEvent {
 }
 exports.UserLoggedInEvent = UserLoggedInEvent;
 class UserRegisteredEvent {
-    constructor(id, email, validateId) {
+    constructor(id, email, locale, validateId) {
         this.eventName = UserRegisteredEvent.name;
         this.authorId = id;
         this.userId = id;
         this.email = email;
+        this.locale = locale;
         this.validateId = validateId;
     }
 }

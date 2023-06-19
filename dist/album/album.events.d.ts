@@ -1,5 +1,5 @@
-import { IEvent } from "../event/IEvent";
-import { AlbumType } from "./album.type";
+import { IEvent } from '../event';
+import { AlbumType } from './album.type';
 export interface AlbumCreated extends IEvent {
     albumId: string;
     type: AlbumType;

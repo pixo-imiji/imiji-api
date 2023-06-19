@@ -2,13 +2,14 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.AcceptInviteForAlbumEvent = exports.InviteForAlbumCreatedEvent = void 0;
 class InviteForAlbumCreatedEvent {
-    constructor(id, authorId, albumId, userId, email) {
+    constructor(id, authorId, albumId, userId, email, type) {
         this.eventName = InviteForAlbumCreatedEvent.name;
         this.authorId = authorId;
         this.inviteId = id;
         this.albumId = albumId;
         this.userId = userId;
         this.email = email;
+        this.type = type;
     }
 }
 exports.InviteForAlbumCreatedEvent = InviteForAlbumCreatedEvent;

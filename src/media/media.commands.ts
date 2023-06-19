@@ -1,10 +1,18 @@
 import { MediaResizeType } from './media.resize.type';
+import { MediaType } from './media.type';
+import { MediaFormat } from './media.format';
 
-export interface UploadMedia {
+export interface UploadAlbumMedia {
   file: File;
-  type: string;
+  type: MediaType;
   albumId: string;
   chapterId: string;
+}
+
+export interface UploadAvatarMedia {
+  id: string;
+  file: File;
+  type: MediaType;
 }
 
 export interface RemoveMedia {

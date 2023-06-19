@@ -3,6 +3,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.MediaType = void 0;
 var MediaType;
 (function (MediaType) {
-    MediaType[MediaType["IMAGE"] = 0] = "IMAGE";
-    MediaType[MediaType["VIDEO"] = 1] = "VIDEO";
+    MediaType["IMAGE"] = "IMAGE";
+    MediaType["VIDEO"] = "VIDEO";
+    MediaType["AVATAR"] = "AVATAR";
 })(MediaType = exports.MediaType || (exports.MediaType = {}));

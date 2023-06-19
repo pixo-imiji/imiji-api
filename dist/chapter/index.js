@@ -14,14 +14,5 @@ var __exportStar = (this && this.__exportStar) || function(m, exports) {
     for (var p in m) if (p !== "default" && !Object.prototype.hasOwnProperty.call(exports, p)) __createBinding(exports, m, p);
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-__exportStar(require("./album"), exports);
-__exportStar(require("./chapter"), exports);
-__exportStar(require("./command"), exports);
-__exportStar(require("./event"), exports);
-__exportStar(require("./guest"), exports);
-__exportStar(require("./invite"), exports);
-__exportStar(require("./mailer"), exports);
-__exportStar(require("./media"), exports);
-__exportStar(require("./package"), exports);
-__exportStar(require("./topics"), exports);
-__exportStar(require("./user"), exports);
+__exportStar(require("./chapter.events"), exports);
+__exportStar(require("./chapter.commands"), exports);

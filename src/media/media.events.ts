@@ -1,7 +1,7 @@
 import { IEvent } from '../event';
 import { MediaType } from './media.type';
 import { MediaFormat } from './media.format';
-import { MediaAction } from './media.action';
+import { MediaDoAction } from './media.action';
 
 export interface MediaUploaded extends IEvent {
   mediaId: string;
@@ -28,7 +28,7 @@ export interface MediaAlbumResized extends IEvent {
 export interface MediaDidAction extends IEvent {
   albumId: string;
   mediaId: string;
-  action: MediaAction;
+  action: MediaDoAction;
 }
 
 export interface MediaAvatarResized extends IEvent {
@@ -126,7 +126,7 @@ export class MediaAvatarResizedEvent implements MediaAvatarResized {
 }
 
 export class MediaDidActionEvent implements MediaDidAction {
-  action: MediaAction;
+  action: MediaDoAction;
   authorId: string;
   eventName: string;
   albumId: string;
@@ -136,7 +136,7 @@ export class MediaDidActionEvent implements MediaDidAction {
     id: string,
     authorId: string,
     albumId: string,
-    action: MediaAction,
+    action: MediaDoAction,
   ) {
     this.mediaId = id;
     this.authorId = authorId;

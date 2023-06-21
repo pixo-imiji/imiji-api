@@ -1,4 +1,4 @@
-export enum MediaAction {
+export enum MediaDoAction {
   LIKE = 'LIKE',
   DISLIKE = 'DISLIKE',
   FAVOURITE = 'FAVOURITE',

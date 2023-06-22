@@ -1,9 +1,9 @@
 import { MediaResizeType } from './media.resize.type';
 import { MediaType } from './media.type';
-import { MediaFormat } from './media.format';
+import { MediaDoAction } from './media.action';
 
 export interface UploadAlbumMedia {
-  file: File;
+  filePath: string;
   type: MediaType;
   albumId: string;
   chapterId: string;
@@ -11,7 +11,7 @@ export interface UploadAlbumMedia {
 
 export interface UploadAvatarMedia {
   id: string;
-  file: File;
+  filePath: string;
   type: MediaType;
 }
 
@@ -27,5 +27,5 @@ export interface ResizeMedia {
 export interface MediaAction {
   mediaId: string;
   metadata: string;
-  action: MediaAction;
+  action: MediaDoAction;
 }

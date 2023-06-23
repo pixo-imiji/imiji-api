@@ -8,6 +8,7 @@ export interface MediaUploaded extends IEvent {
   type: MediaType;
   albumId: string;
   chapterId: string;
+  fileName: string;
   format: MediaFormat;
 }
 
@@ -16,12 +17,14 @@ export interface MediaRemoved extends IEvent {
   type: MediaType;
   albumId: string;
   chapterId: string;
+  fileName: string;
   formats: MediaFormat[];
 }
 
 export interface MediaAlbumResized extends IEvent {
   mediaId: string;
   albumId: string;
+  fileName: string;
   format: MediaFormat;
 }
 
@@ -41,6 +44,7 @@ export class MediaUploadedEvent implements MediaUploaded {
   chapterId: string;
   mediaId: string;
   type: MediaType;
+  fileName: string;
   format: MediaFormat;
   authorId: string;
   eventName: string;
@@ -50,6 +54,7 @@ export class MediaUploadedEvent implements MediaUploaded {
     authorId: string,
     albumId: string,
     chapterId: string,
+    fileName: string,
     type: MediaType,
     format: MediaFormat,
   ) {
@@ -58,6 +63,7 @@ export class MediaUploadedEvent implements MediaUploaded {
     this.mediaId = id;
     this.albumId = albumId;
     this.chapterId = chapterId;
+    this.fileName = fileName;
     this.type = type;
     this.format = format;
   }
@@ -69,6 +75,7 @@ export class MediaRemovedEvent implements MediaRemoved {
   mediaId: string;
   albumId: string;
   chapterId: string;
+  fileName: string;
   type: MediaType;
   formats: MediaFormat[];
 
@@ -77,6 +84,7 @@ export class MediaRemovedEvent implements MediaRemoved {
     authorId: string,
     albumId: string,
     chapterId: string,
+    fileName: string,
     type: MediaType,
     formats: MediaFormat[],
   ) {
@@ -85,6 +93,7 @@ export class MediaRemovedEvent implements MediaRemoved {
     this.mediaId = id;
     this.albumId = albumId;
     this.chapterId = chapterId;
+    this.fileName = fileName;
     this.type = type;
     this.formats = formats;
   }
@@ -95,18 +104,21 @@ export class MediaAlbumResizedEvent implements MediaAlbumResized {
   authorId: string;
   eventName: string;
   mediaId: string;
+  fileName: string;
   format: MediaFormat;
 
   constructor(
     id: string,
     authorId: string,
     albumId: string,
+    fileName: string,
     format: MediaFormat,
   ) {
     this.mediaId = id;
     this.authorId = authorId;
     this.eventName = MediaAlbumResizedEvent.name;
     this.albumId = albumId;
+    this.fileName = fileName;
     this.format = format;
   }
 }

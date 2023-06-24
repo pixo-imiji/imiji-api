@@ -65,7 +65,12 @@ export class MediaUploadedEvent implements MediaUploaded {
     this.chapterId = chapterId;
     this.fileName = fileName;
     this.type = type;
-    this.format = format;
+    this.format = new MediaFormat(
+      format.s3Id,
+      format.sizeType,
+      format.storage,
+      format.resolution,
+    );
   }
 }
 
@@ -119,7 +124,12 @@ export class MediaAlbumResizedEvent implements MediaAlbumResized {
     this.eventName = MediaAlbumResizedEvent.name;
     this.albumId = albumId;
     this.fileName = fileName;
-    this.format = format;
+    this.format = new MediaFormat(
+      format.s3Id,
+      format.sizeType,
+      format.storage,
+      format.resolution,
+    );
   }
 }
 
@@ -132,7 +142,12 @@ export class MediaAvatarResizedEvent implements MediaAvatarResized {
   constructor(id: string, authorId: string, format: MediaFormat) {
     this.id = id;
     this.authorId = authorId;
-    this.format = format;
+    this.format = new MediaFormat(
+      format.s3Id,
+      format.sizeType,
+      format.storage,
+      format.resolution,
+    );
     this.eventName = MediaAvatarResizedEvent.name;
   }
 }

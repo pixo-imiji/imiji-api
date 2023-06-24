@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.BuyRequestCreatedEvent = exports.PackageUpdatedEvent = exports.PackageCreatedEvent = void 0;
+exports.PackageBoughtEvent = exports.BuyRequestCreatedEvent = exports.PackageUpdatedEvent = exports.PackageCreatedEvent = void 0;
 class PackageCreatedEvent {
     constructor(id, authorId, name, mediaLimit, price, years) {
         this.eventName = PackageCreatedEvent.name;
@@ -33,3 +33,12 @@ class BuyRequestCreatedEvent {
     }
 }
 exports.BuyRequestCreatedEvent = BuyRequestCreatedEvent;
+class PackageBoughtEvent {
+    constructor(id, authorId, userId) {
+        this.packageId = id;
+        this.authorId = authorId;
+        this.eventName = PackageBoughtEvent.name;
+        this.userId = userId;
+    }
+}
+exports.PackageBoughtEvent = PackageBoughtEvent;

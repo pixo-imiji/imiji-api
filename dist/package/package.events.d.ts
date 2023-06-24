@@ -16,6 +16,10 @@ export interface PackageUpdated extends IEvent {
 export interface BuyRequestCreated extends IEvent {
     packageId: string;
 }
+export interface PackageBought extends IEvent {
+    packageId: string;
+    userId: string;
+}
 export declare class PackageCreatedEvent implements PackageCreated {
     authorId: string;
     eventName: string;
@@ -41,4 +45,11 @@ export declare class BuyRequestCreatedEvent implements BuyRequestCreated {
     eventName: string;
     packageId: string;
     constructor(id: string, authorId: string);
+}
+export declare class PackageBoughtEvent implements PackageBought {
+    authorId: string;
+    eventName: string;
+    packageId: string;
+    userId: string;
+    constructor(id: string, authorId: string, userId: string);
 }

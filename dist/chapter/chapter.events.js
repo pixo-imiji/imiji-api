@@ -16,10 +16,11 @@ class ChapterUpdatedEvent extends ChapterCreatedEvent {
 }
 exports.ChapterUpdatedEvent = ChapterUpdatedEvent;
 class ChapterRemovedEvent {
-    constructor(id, authorId) {
+    constructor(id, authorId, albumId) {
         this.authorId = authorId;
         this.eventName = ChapterRemovedEvent.name;
         this.chapterId = id;
+        this.albumId = albumId;
     }
 }
 exports.ChapterRemovedEvent = ChapterRemovedEvent;

@@ -9,6 +9,7 @@ export interface ChapterUpdated extends ChapterCreated {
 }
 export interface ChapterRemoved extends IEvent {
     chapterId: string;
+    albumId: string;
 }
 export declare class ChapterCreatedEvent implements ChapterCreated, IEvent {
     albumId: string;
@@ -23,7 +24,8 @@ export declare class ChapterUpdatedEvent extends ChapterCreatedEvent {
 }
 export declare class ChapterRemovedEvent implements ChapterRemoved, IEvent {
     authorId: string;
+    albumId: string;
     chapterId: string;
     eventName: string;
-    constructor(id: string, authorId: string);
+    constructor(id: string, authorId: string, albumId: string);
 }

@@ -17,3 +17,8 @@ Object.defineProperty(exports, "__esModule", { value: true });
 __exportStar(require("./media.commands"), exports);
 __exportStar(require("./media.events"), exports);
 __exportStar(require("./media.type"), exports);
+__exportStar(require("./media.action"), exports);
+__exportStar(require("./media.resolution"), exports);
+__exportStar(require("./media.storage"), exports);
+__exportStar(require("./media.resize.type"), exports);
+__exportStar(require("./media.format"), exports);

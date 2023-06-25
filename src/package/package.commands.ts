@@ -2,6 +2,7 @@ export interface CreatePackage {
   name: string;
   price: number;
   mediaLimit: number;
+  mediaSize: number;
   years: number;
 }
 
@@ -10,6 +11,7 @@ export interface UpdatePackage {
   name: string;
   price: number;
   mediaLimit: number;
+  mediaSize: number;
   years: number;
 }
 

@@ -1,4 +1,6 @@
 import { Locale } from './locale';
+import { UserRole } from './user.role';
+import { UserToken } from './user.token';
 
 export interface UserRegister {
   email: string;
@@ -19,4 +21,13 @@ export interface UserUpdate {
 
 export interface UserValidate {
   validateId: string;
+}
+
+export interface AddUserRole {
+  userId: string;
+  role: UserRole;
+}
+
+export interface RefreshToken {
+  token: UserToken;
 }

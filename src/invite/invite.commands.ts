@@ -2,7 +2,7 @@ import { InviteType } from './invite.type';
 
 export interface CreateInviteForAlbum {
   albumId: string;
-  email: string;
+  guestId: string;
   type: InviteType;
 }
 

@@ -1,16 +1,21 @@
 import { IEvent } from '../event';
 import { Locale } from './locale';
+import { UserRole } from './user.role';
 
 export type UserLoggedIn = IEvent;
+
+export type UserRefreshedToken = IEvent;
 
 export interface UserRegistered extends IEvent {
   email: string;
   validateId: string;
   locale: Locale;
+  role: UserRole;
 }
 
 export interface UserUpdated extends IEvent {
   locale: Locale;
+  role: UserRole;
 }
 
 export interface UserValidated extends IEvent {
@@ -27,6 +32,16 @@ export class UserLoggedInEvent implements UserLoggedIn, IEvent {
   }
 }
 
+export class UserRefreshedTokenEvent implements UserRefreshedToken {
+  authorId: string;
+  eventName: string;
+
+  constructor(authorId: string) {
+    this.authorId = authorId;
+    this.eventName = UserLoggedInEvent.name;
+  }
+}
+
 export class UserRegisteredEvent implements UserRegistered {
   eventName: string;
   authorId: string;
@@ -34,13 +49,21 @@ export class UserRegisteredEvent implements UserRegistered {
   userId: string;
   validateId: string;
   locale: Locale;
+  role: UserRole;
 
-  constructor(id: string, email: string, locale: Locale, validateId: string) {
+  constructor(
+    id: string,
+    email: string,
+    locale: Locale,
+    validateId: string,
+    role: UserRole,
+  ) {
     this.eventName = UserRegisteredEvent.name;
     this.authorId = id;
     this.userId = id;
     this.email = email;
     this.locale = locale;
+    this.role = role;
     this.validateId = validateId;
   }
 }
@@ -49,11 +72,13 @@ export class UserUpdatedEvent implements UserUpdated {
   eventName: string;
   authorId: string;
   locale: Locale;
+  role: UserRole;
 
-  constructor(authorId: string, locale: Locale) {
+  constructor(authorId: string, locale: Locale, role: UserRole) {
     this.eventName = UserUpdatedEvent.name;
     this.authorId = authorId;
     this.locale = locale;
+    this.role = role;
   }
 }
 

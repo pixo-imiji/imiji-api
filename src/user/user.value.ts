@@ -1,3 +1,5 @@
+import { UserRole } from './user.role';
+
 export class UserValue {
   constructor(
     private readonly _id: string,
@@ -5,6 +7,7 @@ export class UserValue {
     private readonly _locale: string,
     private readonly _validate: boolean,
     private readonly _publicKey: string,
+    private readonly _role: UserRole,
   ) {}
 
   get id(): string {
@@ -25,5 +28,9 @@ export class UserValue {
 
   get publicKey(): string {
     return this._publicKey;
+  }
+
+  get role(): UserRole {
+    return this._role;
   }
 }

@@ -1,20 +1,17 @@
 import { IEvent } from '../event';
 
-export interface PackageCreated extends IEvent {
+export interface IPackage {
   packageId: string;
   name: string;
   price: number;
   mediaLimit: number;
+  mediaSize: number;
   years: number;
 }
 
-export interface PackageUpdated extends IEvent {
-  packageId: string;
-  name: string;
-  price: number;
-  mediaLimit: number;
-  years: number;
-}
+export interface PackageCreated extends IEvent, IPackage {}
+
+export interface PackageUpdated extends IEvent, IPackage {}
 
 export interface BuyRequestCreated extends IEvent {
   packageId: string;
@@ -29,6 +26,7 @@ export class PackageCreatedEvent implements PackageCreated {
   authorId: string;
   eventName: string;
   mediaLimit: number;
+  mediaSize: number;
   name: string;
   packageId: string;
   price: number;
@@ -39,6 +37,7 @@ export class PackageCreatedEvent implements PackageCreated {
     authorId: string,
     name: string,
     mediaLimit: number,
+    mediaSize: number,
     price: number,
     years: number,
   ) {
@@ -47,6 +46,7 @@ export class PackageCreatedEvent implements PackageCreated {
     this.packageId = id;
     this.name = name;
     this.mediaLimit = mediaLimit;
+    this.mediaSize = mediaSize;
     this.price = price;
     this.years = years;
   }
@@ -56,6 +56,7 @@ export class PackageUpdatedEvent implements PackageUpdated {
   authorId: string;
   eventName: string;
   mediaLimit: number;
+  mediaSize: number;
   name: string;
   packageId: string;
   price: number;
@@ -66,6 +67,7 @@ export class PackageUpdatedEvent implements PackageUpdated {
     authorId: string,
     name: string,
     mediaLimit: number,
+    mediaSize: number,
     price: number,
     years: number,
   ) {
@@ -74,6 +76,7 @@ export class PackageUpdatedEvent implements PackageUpdated {
     this.packageId = id;
     this.name = name;
     this.mediaLimit = mediaLimit;
+    this.mediaSize = mediaSize;
     this.price = price;
     this.years = years;
   }

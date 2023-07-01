@@ -22,6 +22,11 @@ export interface UserValidated extends IEvent {
   validateId: string;
 }
 
+export interface UserForgotPassword extends IEvent {
+  email: string;
+  resetPasswordId: string;
+}
+
 export class UserLoggedInEvent implements UserLoggedIn, IEvent {
   eventName: string;
   authorId: string;
@@ -91,5 +96,19 @@ export class UserValidatedEvent implements UserValidated {
     this.eventName = UserValidatedEvent.name;
     this.authorId = authorId;
     this.validateId = validateId;
+  }
+}
+
+export class UserForgotPasswordEvent implements UserForgotPassword {
+  authorId: string;
+  email: string;
+  eventName: string;
+  resetPasswordId: string;
+
+  constructor(authorId: string, email: string, resetPasswordId: string) {
+    this.authorId = authorId;
+    this.email = email;
+    this.resetPasswordId = resetPasswordId;
+    this.eventName = UserForgotPasswordEvent.name;
   }
 }

@@ -14,6 +14,10 @@ export interface UserLogin {
   password: string;
 }
 
+export interface UserLoginLink {
+  email: string;
+}
+
 export interface UserUpdate {
   userId: string;
   locale: Locale;
@@ -28,6 +32,14 @@ export interface AddUserRole {
   role: UserRole;
 }
 
-export interface RefreshToken {
+export interface UserRefreshToken {
   token: UserToken;
+}
+
+export interface UserForgotPassword {
+  email: string;
+}
+
+export interface UserResetPassword {
+  resetPasswordId: string;
 }

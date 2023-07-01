@@ -33,7 +33,7 @@ export interface AddUserRole {
 }
 
 export interface UserRefreshToken {
-  token: UserToken;
+  token: string;
 }
 
 export interface UserForgotPassword {

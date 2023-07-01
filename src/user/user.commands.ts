@@ -1,6 +1,5 @@
 import { Locale } from './locale';
 import { UserRole } from './user.role';
-import { UserToken } from './user.token';
 
 export interface UserRegister {
   email: string;
@@ -36,7 +35,7 @@ export interface UserRefreshToken {
   token: string;
 }
 
-export interface UserForgotPassword {
+export interface UserForgetPassword {
   email: string;
 }
 

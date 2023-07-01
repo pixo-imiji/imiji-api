@@ -1,6 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.MediaDidActionEvent = exports.MediaAvatarResizedEvent = exports.MediaAlbumResizedEvent = exports.MediaRemovedEvent = exports.MediaUploadedEvent = void 0;
+const media_format_1 = require("./media.format");
 class MediaUploadedEvent {
     constructor(id, authorId, albumId, chapterId, fileName, type, format) {
         this.eventName = MediaUploadedEvent.name;
@@ -10,7 +11,7 @@ class MediaUploadedEvent {
         this.chapterId = chapterId;
         this.fileName = fileName;
         this.type = type;
-        this.format = format;
+        this.format = new media_format_1.MediaFormat(format.s3Id, format.sizeType, format.storage, format.resolution);
     }
 }
 exports.MediaUploadedEvent = MediaUploadedEvent;
@@ -34,7 +35,7 @@ class MediaAlbumResizedEvent {
         this.eventName = MediaAlbumResizedEvent.name;
         this.albumId = albumId;
         this.fileName = fileName;
-        this.format = format;
+        this.format = new media_format_1.MediaFormat(format.s3Id, format.sizeType, format.storage, format.resolution);
     }
 }
 exports.MediaAlbumResizedEvent = MediaAlbumResizedEvent;
@@ -42,7 +43,7 @@ class MediaAvatarResizedEvent {
     constructor(id, authorId, format) {
         this.id = id;
         this.authorId = authorId;
-        this.format = format;
+        this.format = new media_format_1.MediaFormat(format.s3Id, format.sizeType, format.storage, format.resolution);
         this.eventName = MediaAvatarResizedEvent.name;
     }
 }

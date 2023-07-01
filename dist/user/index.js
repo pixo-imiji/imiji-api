@@ -19,3 +19,5 @@ __exportStar(require("./user.events"), exports);
 __exportStar(require("./user.commands"), exports);
 __exportStar(require("./user.value"), exports);
 __exportStar(require("./auth.service"), exports);
+__exportStar(require("./user.role"), exports);
+__exportStar(require("./locale"), exports);

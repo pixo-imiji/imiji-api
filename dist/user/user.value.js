@@ -2,12 +2,13 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.UserValue = void 0;
 class UserValue {
-    constructor(_id, _email, _locale, _validate, _publicKey) {
+    constructor(_id, _email, _locale, _validate, _publicKey, _role) {
         this._id = _id;
         this._email = _email;
         this._locale = _locale;
         this._validate = _validate;
         this._publicKey = _publicKey;
+        this._role = _role;
     }
     get id() {
         return this._id;
@@ -23,6 +24,9 @@ class UserValue {
     }
     get publicKey() {
         return this._publicKey;
+    }
+    get role() {
+        return this._role;
     }
 }
 exports.UserValue = UserValue;

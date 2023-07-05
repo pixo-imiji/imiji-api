@@ -7,7 +7,7 @@ export class UserValue {
     private readonly _locale: string,
     private readonly _validate: boolean,
     private readonly _publicKey: string,
-    private readonly _role: UserRole,
+    private readonly _roles: UserRole[],
   ) {}
 
   get id(): string {
@@ -30,7 +30,7 @@ export class UserValue {
     return this._publicKey;
   }
 
-  get role(): UserRole {
-    return this._role;
+  get roles(): UserRole[] {
+    return this._roles;
   }
 }

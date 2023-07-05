@@ -9,6 +9,7 @@ export interface MediaUploaded extends IEvent {
   albumId: string;
   chapterId: string;
   fileName: string;
+  size: number;
   format: MediaFormat;
 }
 
@@ -18,6 +19,7 @@ export interface MediaRemoved extends IEvent {
   albumId: string;
   chapterId: string;
   fileName: string;
+  size: number;
   formats: MediaFormat[];
 }
 
@@ -26,6 +28,7 @@ export interface MediaAlbumResized extends IEvent {
   albumId: string;
   fileName: string;
   format: MediaFormat;
+  size: number;
 }
 
 export interface MediaDidAction extends IEvent {
@@ -48,6 +51,7 @@ export class MediaUploadedEvent implements MediaUploaded {
   format: MediaFormat;
   authorId: string;
   eventName: string;
+  size: number;
 
   constructor(
     id: string,
@@ -57,6 +61,7 @@ export class MediaUploadedEvent implements MediaUploaded {
     fileName: string,
     type: MediaType,
     format: MediaFormat,
+    size: number,
   ) {
     this.eventName = MediaUploadedEvent.name;
     this.authorId = authorId;
@@ -71,6 +76,7 @@ export class MediaUploadedEvent implements MediaUploaded {
       format.storage,
       format.resolution,
     );
+    this.size = size;
   }
 }
 
@@ -83,6 +89,7 @@ export class MediaRemovedEvent implements MediaRemoved {
   fileName: string;
   type: MediaType;
   formats: MediaFormat[];
+  size: number;
 
   constructor(
     id: string,
@@ -92,6 +99,7 @@ export class MediaRemovedEvent implements MediaRemoved {
     fileName: string,
     type: MediaType,
     formats: MediaFormat[],
+    size: number,
   ) {
     this.eventName = MediaRemovedEvent.name;
     this.authorId = authorId;
@@ -101,6 +109,7 @@ export class MediaRemovedEvent implements MediaRemoved {
     this.fileName = fileName;
     this.type = type;
     this.formats = formats;
+    this.size = size;
   }
 }
 
@@ -111,6 +120,7 @@ export class MediaAlbumResizedEvent implements MediaAlbumResized {
   mediaId: string;
   fileName: string;
   format: MediaFormat;
+  size: number;
 
   constructor(
     id: string,
@@ -118,6 +128,7 @@ export class MediaAlbumResizedEvent implements MediaAlbumResized {
     albumId: string,
     fileName: string,
     format: MediaFormat,
+    size: number,
   ) {
     this.mediaId = id;
     this.authorId = authorId;
@@ -130,6 +141,7 @@ export class MediaAlbumResizedEvent implements MediaAlbumResized {
       format.storage,
       format.resolution,
     );
+    this.size = size;
   }
 }
 

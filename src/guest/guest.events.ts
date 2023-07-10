@@ -14,7 +14,7 @@ export interface GuestRemoved extends IEvent {
 }
 
 export interface RoleChanged extends IEvent {
-  guestId: string;
+  email: string;
   albumId: string;
   role: GuestRole;
 }
@@ -54,13 +54,18 @@ export class GuestRemovedEvent implements GuestRemoved {
 export class RoleChangedEvent implements RoleChanged {
   authorId: string;
   eventName: string;
-  guestId: string;
+  email: string;
   albumId: string;
   role: GuestRole;
 
-  constructor(id: string, authorId: string, albumId: string, role: GuestRole) {
+  constructor(
+    email: string,
+    authorId: string,
+    albumId: string,
+    role: GuestRole,
+  ) {
     this.eventName = RoleChangedEvent.name;
-    this.guestId = id;
+    this.email = email;
     this.authorId = authorId;
     this.albumId = albumId;
     this.role = role;

@@ -3,4 +3,6 @@ export enum GuestRole {
   INVITED = 'INVITED',
   GUEST = 'GUEST',
   MANAGER = 'MANAGER',
+  REJECT = 'REJECT',
+  BANNED = 'BANNED',
 }

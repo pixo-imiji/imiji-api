@@ -14,6 +14,11 @@ export interface InviteForAlbumAccepted extends IEvent {
   guestId: string;
 }
 
+export interface InviteForAlbumReject extends IEvent {
+  inviteId: string;
+  guestId: string;
+}
+
 export class InviteForAlbumCreatedEvent implements InviteForAlbumCreated {
   albumId: string;
   authorId: string;
@@ -49,6 +54,20 @@ export class AcceptInviteForAlbumEvent implements InviteForAlbumAccepted {
 
   constructor(id: string, authorId: string, guestId: string) {
     this.eventName = AcceptInviteForAlbumEvent.name;
+    this.authorId = authorId;
+    this.guestId = guestId;
+    this.inviteId = id;
+  }
+}
+
+export class RejectInviteForAlbumEvent implements InviteForAlbumReject {
+  authorId: string;
+  guestId: string;
+  eventName: string;
+  inviteId: string;
+
+  constructor(id: string, authorId: string, guestId: string) {
+    this.eventName = RejectInviteForAlbumEvent.name;
     this.authorId = authorId;
     this.guestId = guestId;
     this.inviteId = id;

@@ -26,8 +26,7 @@ export interface GuestRemoved extends IEvent, GuestTransport {
 }
 
 export interface RoleChanged extends IEvent {
-  email: string;
-  albumId: string;
+  guestId: string;
   role: GuestRole;
 }
 
@@ -91,23 +90,16 @@ export class GuestRemovedEvent implements GuestRemoved {
   }
 }
 
-export class RoleChangedEvent implements RoleChanged {
+export class GuestRoleChangedEvent implements RoleChanged {
   authorId: string;
   eventName: string;
-  email: string;
-  albumId: string;
+  guestId: string;
   role: GuestRole;
 
-  constructor(
-    email: string,
-    authorId: string,
-    albumId: string,
-    role: GuestRole,
-  ) {
-    this.eventName = RoleChangedEvent.name;
-    this.email = email;
+  constructor(id: string, authorId: string, role: GuestRole) {
+    this.eventName = GuestRoleChangedEvent.name;
+    this.guestId = id;
     this.authorId = authorId;
-    this.albumId = albumId;
     this.role = role;
   }
 }

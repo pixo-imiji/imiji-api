@@ -1,4 +1,4 @@
 export interface IEvent {
-  eventName: string;
-  authorId: string;
+  readonly eventName: string;
+  readonly authorId: string;
 }

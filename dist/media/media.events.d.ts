@@ -8,6 +8,7 @@ export interface MediaUploaded extends IEvent {
     albumId: string;
     chapterId: string;
     fileName: string;
+    size: number;
     format: MediaFormat;
 }
 export interface MediaRemoved extends IEvent {
@@ -16,6 +17,7 @@ export interface MediaRemoved extends IEvent {
     albumId: string;
     chapterId: string;
     fileName: string;
+    size: number;
     formats: MediaFormat[];
 }
 export interface MediaAlbumResized extends IEvent {
@@ -23,6 +25,7 @@ export interface MediaAlbumResized extends IEvent {
     albumId: string;
     fileName: string;
     format: MediaFormat;
+    size: number;
 }
 export interface MediaDidAction extends IEvent {
     albumId: string;
@@ -42,7 +45,8 @@ export declare class MediaUploadedEvent implements MediaUploaded {
     format: MediaFormat;
     authorId: string;
     eventName: string;
-    constructor(id: string, authorId: string, albumId: string, chapterId: string, fileName: string, type: MediaType, format: MediaFormat);
+    size: number;
+    constructor(id: string, authorId: string, albumId: string, chapterId: string, fileName: string, type: MediaType, format: MediaFormat, size: number);
 }
 export declare class MediaRemovedEvent implements MediaRemoved {
     authorId: string;
@@ -53,7 +57,8 @@ export declare class MediaRemovedEvent implements MediaRemoved {
     fileName: string;
     type: MediaType;
     formats: MediaFormat[];
-    constructor(id: string, authorId: string, albumId: string, chapterId: string, fileName: string, type: MediaType, formats: MediaFormat[]);
+    size: number;
+    constructor(id: string, authorId: string, albumId: string, chapterId: string, fileName: string, type: MediaType, formats: MediaFormat[], size: number);
 }
 export declare class MediaAlbumResizedEvent implements MediaAlbumResized {
     albumId: string;
@@ -62,7 +67,8 @@ export declare class MediaAlbumResizedEvent implements MediaAlbumResized {
     mediaId: string;
     fileName: string;
     format: MediaFormat;
-    constructor(id: string, authorId: string, albumId: string, fileName: string, format: MediaFormat);
+    size: number;
+    constructor(id: string, authorId: string, albumId: string, fileName: string, format: MediaFormat, size: number);
 }
 export declare class MediaAvatarResizedEvent implements MediaAvatarResized {
     authorId: string;

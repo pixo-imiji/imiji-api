@@ -4,6 +4,5 @@ exports.InviteType = void 0;
 var InviteType;
 (function (InviteType) {
     InviteType["EMAIL"] = "EMAIL";
-    InviteType["QRCODE"] = "QRCODE";
     InviteType["PUBLIC_LINK"] = "PUBLIC_LINK";
 })(InviteType = exports.InviteType || (exports.InviteType = {}));

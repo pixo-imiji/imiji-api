@@ -1,10 +1,11 @@
 import { GuestRole } from './guest.role';
-export interface AddGuest {
+import { GuestTransport } from './guest.events';
+export interface AddGuest extends GuestTransport {
     userId: string;
     albumId: string;
     email: string;
 }
-export interface RemoveGuest {
+export interface RemoveGuest extends GuestTransport {
     userId: string;
     albumId: string;
     email: string;

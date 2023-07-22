@@ -7,4 +7,6 @@ var GuestRole;
     GuestRole["INVITED"] = "INVITED";
     GuestRole["GUEST"] = "GUEST";
     GuestRole["MANAGER"] = "MANAGER";
+    GuestRole["REJECT"] = "REJECT";
+    GuestRole["BANNED"] = "BANNED";
 })(GuestRole = exports.GuestRole || (exports.GuestRole = {}));

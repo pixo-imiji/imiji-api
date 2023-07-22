@@ -1,6 +1,7 @@
 export * from './album';
 export * from './chapter';
 export * from './command';
+export * from './handler';
 export * from './event';
 export * from './guest';
 export * from './invite';

@@ -32,4 +32,6 @@ export interface UserForgetPassword {
 }
 export interface UserResetPassword {
     resetPasswordId: string;
+    password: string;
+    repeatPassword: string;
 }

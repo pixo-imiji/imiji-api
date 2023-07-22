@@ -1,75 +1,92 @@
 import { IEvent } from '../event';
-import { InviteType } from './invite.type';
 
-export interface InviteForAlbumCreated extends IEvent {
-  inviteId: string;
-  guestId: string;
-  albumId: string;
-  email: string;
-  type: InviteType;
+export interface GuestInvitedCreated extends IEvent {
+  readonly inviteId: string;
+  readonly guestId: string;
+  readonly albumId: string;
+  readonly endDate: number;
+}
+
+export interface LinkInviteCreated extends IEvent {
+  readonly inviteId: string;
+  readonly albumId: string;
+  readonly endDate: number;
 }
 
 export interface InviteForAlbumAccepted extends IEvent {
-  inviteId: string;
-  guestId: string;
+  readonly inviteId: string;
+  readonly userId: string;
 }
 
 export interface InviteForAlbumReject extends IEvent {
-  inviteId: string;
-  guestId: string;
+  readonly inviteId: string;
+  readonly userId: string;
 }
 
-export class InviteForAlbumCreatedEvent implements InviteForAlbumCreated {
-  albumId: string;
-  authorId: string;
-  email: string;
-  eventName: string;
-  inviteId: string;
-  guestId: string;
-  type: InviteType;
+export class InviteForGuestAlbumCreatedEvent implements GuestInvitedCreated {
+  readonly albumId: string;
+  readonly authorId: string;
+  readonly endDate: number;
+  readonly eventName: string;
+  readonly guestId: string;
+  readonly inviteId: string;
 
   constructor(
     id: string,
     authorId: string,
     albumId: string,
     guestId: string,
-    email: string,
-    type: InviteType,
+    endDate: number,
   ) {
-    this.eventName = InviteForAlbumCreatedEvent.name;
+    this.eventName = InviteForGuestAlbumCreatedEvent.name;
     this.authorId = authorId;
     this.inviteId = id;
     this.albumId = albumId;
     this.guestId = guestId;
-    this.email = email;
-    this.type = type;
+    this.endDate = endDate;
   }
 }
 
-export class AcceptInviteForAlbumEvent implements InviteForAlbumAccepted {
-  authorId: string;
-  guestId: string;
-  eventName: string;
-  inviteId: string;
+export class InviteLinkForAlbumCreatedEvent implements LinkInviteCreated {
+  readonly albumId: string;
+  readonly authorId: string;
+  readonly endDate: number;
+  readonly eventName: string;
+  readonly inviteId: string;
 
-  constructor(id: string, authorId: string, guestId: string) {
-    this.eventName = AcceptInviteForAlbumEvent.name;
+  constructor(id: string, authorId: string, albumId: string, endDate: number) {
+    this.inviteId = id;
     this.authorId = authorId;
-    this.guestId = guestId;
+    this.albumId = albumId;
+    this.endDate = endDate;
+    this.eventName = InviteLinkForAlbumCreatedEvent.name;
+  }
+}
+
+export class InviteForAlbumAcceptedEvent implements InviteForAlbumAccepted {
+  readonly authorId: string;
+  readonly eventName: string;
+  readonly inviteId: string;
+  readonly userId: string;
+
+  constructor(id: string, authorId: string) {
+    this.eventName = InviteForAlbumAcceptedEvent.name;
+    this.authorId = authorId;
+    this.userId = authorId;
     this.inviteId = id;
   }
 }
 
-export class RejectInviteForAlbumEvent implements InviteForAlbumReject {
-  authorId: string;
-  guestId: string;
-  eventName: string;
-  inviteId: string;
+export class InviteForAlbumRejectedEvent implements InviteForAlbumReject {
+  readonly authorId: string;
+  readonly eventName: string;
+  readonly inviteId: string;
+  readonly userId: string;
 
-  constructor(id: string, authorId: string, guestId: string) {
-    this.eventName = RejectInviteForAlbumEvent.name;
+  constructor(id: string, authorId: string) {
+    this.eventName = InviteForAlbumRejectedEvent.name;
     this.authorId = authorId;
-    this.guestId = guestId;
+    this.userId = authorId;
     this.inviteId = id;
   }
 }

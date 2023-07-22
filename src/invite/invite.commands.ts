@@ -1,9 +1,10 @@
-import { InviteType } from './invite.type';
+export interface CreateLinkInviteForAlbum {
+  albumId: string;
+}
 
-export interface CreateInviteForAlbum {
+export interface CreateGuestInviteForAlbum {
   albumId: string;
   guestId: string;
-  type: InviteType;
 }
 
 export interface AcceptInviteForAlbum {

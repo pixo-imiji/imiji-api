@@ -5,12 +5,12 @@ export declare class UserValue {
     private readonly _locale;
     private readonly _validate;
     private readonly _publicKey;
-    private readonly _role;
-    constructor(_id: string, _email: string, _locale: string, _validate: boolean, _publicKey: string, _role: UserRole);
+    private readonly _roles;
+    constructor(_id: string, _email: string, _locale: string, _validate: boolean, _publicKey: string, _roles: UserRole[]);
     get id(): string;
     get email(): string;
     get locale(): string;
     get validate(): boolean;
     get publicKey(): string;
-    get role(): UserRole;
+    get roles(): UserRole[];
 }

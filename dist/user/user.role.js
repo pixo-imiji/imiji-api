@@ -7,4 +7,5 @@ var UserRole;
     UserRole["MANAGER"] = "MANAGER";
     UserRole["USER"] = "USER";
     UserRole["MARKETING"] = "MARKETING";
+    UserRole["PAYER"] = "PAYER";
 })(UserRole = exports.UserRole || (exports.UserRole = {}));

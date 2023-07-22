@@ -17,6 +17,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 __exportStar(require("./album"), exports);
 __exportStar(require("./chapter"), exports);
 __exportStar(require("./command"), exports);
+__exportStar(require("./handler"), exports);
 __exportStar(require("./event"), exports);
 __exportStar(require("./guest"), exports);
 __exportStar(require("./invite"), exports);

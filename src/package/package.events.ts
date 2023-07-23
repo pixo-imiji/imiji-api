@@ -15,11 +15,14 @@ export interface PackageUpdated extends IEvent, IPackage {}
 
 export interface BuyRequestCreated extends IEvent {
   packageId: string;
+  orderId: string;
+  paymentRef: string;
+  paymentMethod: string;
+  price: number;
 }
 
 export interface PackageBought extends IEvent {
-  packageId: string;
-  userId: string;
+  orderId: string;
 }
 
 export class PackageCreatedEvent implements PackageCreated {
@@ -86,24 +89,37 @@ export class BuyRequestCreatedEvent implements BuyRequestCreated {
   authorId: string;
   eventName: string;
   packageId: string;
+  orderId: string;
+  price: number;
+  paymentMethod: string;
+  paymentRef: string;
 
-  constructor(id: string, authorId: string) {
+  constructor(
+    id: string,
+    authorId: string,
+    orderId: string,
+    price: number,
+    method: string,
+    refId: string,
+  ) {
     this.eventName = BuyRequestCreatedEvent.name;
     this.authorId = authorId;
     this.packageId = id;
+    this.orderId = orderId;
+    this.price = price;
+    this.paymentMethod = method;
+    this.paymentRef = refId;
   }
 }
 
 export class PackageBoughtEvent implements PackageBought {
   authorId: string;
   eventName: string;
-  packageId: string;
-  userId: string;
+  orderId: string;
 
-  constructor(id: string, authorId: string, userId: string) {
-    this.packageId = id;
-    this.authorId = authorId;
+  constructor(id: string) {
+    this.orderId = id;
+    this.authorId = 'payment-gateway-system';
     this.eventName = PackageBoughtEvent.name;
-    this.userId = userId;
   }
 }

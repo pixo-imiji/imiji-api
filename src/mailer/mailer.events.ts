@@ -22,41 +22,71 @@ export class ValidateAccountMailSentEvent implements ValidateAccountMailSent {
   }
 }
 
+export interface DeleteAccountMailSent extends IEvent {
+  readonly id: string;
+  readonly email: string;
+}
+
+export class DeleteAccountMailSentEvent implements DeleteAccountMailSent {
+  readonly authorId: string;
+  readonly email: string;
+  readonly eventName: string;
+  readonly id: string;
+
+  constructor(id: string, email: string, authorId: string) {
+    this.id = id;
+    this.eventName = DeleteAccountMailSentEvent.name;
+    this.authorId = authorId;
+    this.email = email;
+  }
+}
+
+export interface DownloadLinkSent extends IEvent {
+  readonly id: string;
+  readonly albumId: string;
+  readonly link: string;
+  readonly userId: string;
+}
+
+export class DownloadLinkSentEvent implements DownloadLinkSent {
+  readonly albumId: string;
+  readonly authorId: string;
+  readonly eventName: string;
+  readonly id: string;
+  readonly link: string;
+  readonly userId: string;
+
+  constructor(
+    id: string,
+    albumId: string,
+    userId: string,
+    authorId: string,
+    link: string,
+  ) {
+    this.id = id;
+    this.albumId = albumId;
+    this.userId = userId;
+    this.authorId = authorId;
+    this.link = link;
+    this.eventName = DownloadLinkSentEvent.name;
+  }
+}
+
 export interface InvoicePackageMailSent extends IEvent {
   readonly id: string;
-  readonly mail: string;
-  readonly startDate: number;
-  readonly endDate: number;
-  readonly currency: string;
-  readonly price: string;
+  readonly orderId: string;
 }
 
 export class InvoicePackageMailSentEvent implements InvoicePackageMailSent {
   readonly id: string;
   readonly authorId: string;
   readonly eventName: string;
-  readonly mail: string;
-  readonly currency: string;
-  readonly endDate: number;
-  readonly price: string;
-  readonly startDate: number;
+  readonly orderId: string;
 
-  constructor(
-    id: string,
-    mail: string,
-    authorId: string,
-    startDate: number,
-    endDate: number,
-    price: string,
-    currency: string,
-  ) {
+  constructor(id: string, orderId: string, authorId: string) {
     this.id = id;
-    this.mail = mail;
+    this.orderId = orderId;
     this.authorId = authorId;
-    this.startDate = startDate;
-    this.endDate = endDate;
-    this.price = price;
-    this.currency = currency;
     this.eventName = InvoicePackageMailSentEvent.name;
   }
 }

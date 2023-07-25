@@ -27,6 +27,60 @@ export interface UserForgotPassword extends IEvent {
   readonly resetPasswordId: string;
 }
 
+export interface UserRemoved extends IEvent {
+  readonly userId: string;
+}
+
+export interface UserRoleAdded extends IEvent {
+  readonly userId: string;
+  readonly role: UserRole;
+}
+
+export interface UserRoleRemoved extends IEvent {
+  readonly userId: string;
+  readonly role: UserRole;
+}
+
+export class UserRoleRemovedEvent implements UserRoleRemoved {
+  readonly authorId: string;
+  readonly eventName: string;
+  readonly userId: string;
+  readonly role: UserRole;
+
+  constructor(id: string, authorId: string, role: UserRole) {
+    this.userId = id;
+    this.authorId = authorId;
+    this.role = role;
+    this.eventName = UserRoleRemovedEvent.name;
+  }
+}
+
+export class UserRoleAddedEvent implements UserRoleAdded {
+  readonly authorId: string;
+  readonly eventName: string;
+  readonly role: UserRole;
+  readonly userId: string;
+
+  constructor(id: string, authorId: string, role: UserRole) {
+    this.userId = id;
+    this.authorId = authorId;
+    this.role = role;
+    this.eventName = UserRoleAddedEvent.name;
+  }
+}
+
+export class UserRemovedEvent implements UserRemoved {
+  readonly authorId: string;
+  readonly eventName: string;
+  readonly userId: string;
+
+  constructor(id: string, authorId: string) {
+    this.userId = id;
+    this.authorId = authorId;
+    this.eventName = UserRemovedEvent.name;
+  }
+}
+
 export class UserLoggedInEvent implements UserLoggedIn, IEvent {
   readonly eventName: string;
   readonly authorId: string;

@@ -1,17 +1,20 @@
 import { IEvent } from '../event';
 
 export interface ValidateAccountMailSent extends IEvent {
-  mail: string;
-  validateId: string;
+  readonly id: string;
+  readonly mail: string;
+  readonly validateId: string;
 }
 
 export class ValidateAccountMailSentEvent implements ValidateAccountMailSent {
-  authorId: string;
-  eventName: string;
-  mail: string;
-  validateId: string;
+  readonly id: string;
+  readonly authorId: string;
+  readonly eventName: string;
+  readonly mail: string;
+  readonly validateId: string;
 
-  constructor(mail: string, authorId: string, validateId: string) {
+  constructor(id: string, mail: string, authorId: string, validateId: string) {
+    this.id = id;
     this.mail = mail;
     this.authorId = authorId;
     this.validateId = validateId;
@@ -20,23 +23,26 @@ export class ValidateAccountMailSentEvent implements ValidateAccountMailSent {
 }
 
 export interface InvoicePackageMailSent extends IEvent {
-  mail: string;
-  startDate: number;
-  endDate: number;
-  currency: string;
-  price: string;
+  readonly id: string;
+  readonly mail: string;
+  readonly startDate: number;
+  readonly endDate: number;
+  readonly currency: string;
+  readonly price: string;
 }
 
 export class InvoicePackageMailSentEvent implements InvoicePackageMailSent {
-  authorId: string;
-  eventName: string;
-  mail: string;
-  currency: string;
-  endDate: number;
-  price: string;
-  startDate: number;
+  readonly id: string;
+  readonly authorId: string;
+  readonly eventName: string;
+  readonly mail: string;
+  readonly currency: string;
+  readonly endDate: number;
+  readonly price: string;
+  readonly startDate: number;
 
   constructor(
+    id: string,
     mail: string,
     authorId: string,
     startDate: number,
@@ -44,6 +50,7 @@ export class InvoicePackageMailSentEvent implements InvoicePackageMailSent {
     price: string,
     currency: string,
   ) {
+    this.id = id;
     this.mail = mail;
     this.authorId = authorId;
     this.startDate = startDate;
@@ -55,15 +62,17 @@ export class InvoicePackageMailSentEvent implements InvoicePackageMailSent {
 }
 
 export interface ResetPasswordMailSent extends IEvent {
-  mail: string;
-  resetPasswordId: string;
+  readonly id: string;
+  readonly mail: string;
+  readonly resetPasswordId: string;
 }
 
 export class ResetPasswordMailSentEvent implements ResetPasswordMailSent {
-  authorId: string;
-  eventName: string;
-  mail: string;
-  resetPasswordId: string;
+  readonly id: string;
+  readonly authorId: string;
+  readonly eventName: string;
+  readonly mail: string;
+  readonly resetPasswordId: string;
 
   constructor(mail: string, authorId: string, resetPasswordId: string) {
     this.mail = mail;
@@ -74,15 +83,17 @@ export class ResetPasswordMailSentEvent implements ResetPasswordMailSent {
 }
 
 export interface ResetPasswordConfirmMailSent extends IEvent {
-  mail: string;
+  readonly id: string;
+  readonly mail: string;
 }
 
 export class ResetPasswordConfirmMailSentEvent
   implements ResetPasswordConfirmMailSent
 {
-  authorId: string;
-  eventName: string;
-  mail: string;
+  readonly id: string;
+  readonly authorId: string;
+  readonly eventName: string;
+  readonly mail: string;
 
   constructor(mail: string, authorId: string) {
     this.mail = mail;
@@ -92,17 +103,20 @@ export class ResetPasswordConfirmMailSentEvent
 }
 
 export interface InviteMailSent extends IEvent {
-  mail: string;
-  inviteId: string;
+  readonly id: string;
+  readonly mail: string;
+  readonly inviteId: string;
 }
 
 export class InviteMailSentEvent implements InviteMailSent {
-  authorId: string;
-  mail: string;
-  eventName: string;
-  inviteId: string;
+  readonly id: string;
+  readonly authorId: string;
+  readonly mail: string;
+  readonly eventName: string;
+  readonly inviteId: string;
 
-  constructor(mail: string, authorId: string, inviteId: string) {
+  constructor(id: string, mail: string, authorId: string, inviteId: string) {
+    this.id = id;
     this.mail = mail;
     this.authorId = authorId;
     this.inviteId = inviteId;

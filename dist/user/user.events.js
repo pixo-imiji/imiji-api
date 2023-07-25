@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.UserForgotPasswordEvent = exports.UserValidatedEvent = exports.UserUpdatedEvent = exports.UserRegisteredEvent = exports.UserRefreshedTokenEvent = exports.UserLoggedInEvent = void 0;
+exports.UserPasswordUpdatedEvent = exports.UserForgotPasswordEvent = exports.UserValidatedEvent = exports.UserUpdatedEvent = exports.UserRegisteredEvent = exports.UserRefreshedTokenEvent = exports.UserLoggedInEvent = void 0;
 class UserLoggedInEvent {
     constructor(authorId) {
         this.authorId = authorId;
@@ -53,3 +53,6 @@ class UserForgotPasswordEvent {
     }
 }
 exports.UserForgotPasswordEvent = UserForgotPasswordEvent;
+class UserPasswordUpdatedEvent {
+}
+exports.UserPasswordUpdatedEvent = UserPasswordUpdatedEvent;

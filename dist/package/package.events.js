@@ -28,19 +28,25 @@ class PackageUpdatedEvent {
 }
 exports.PackageUpdatedEvent = PackageUpdatedEvent;
 class BuyRequestCreatedEvent {
-    constructor(id, authorId) {
+    constructor(id, authorId, orderId, price, mediaLimit, mediaSize, method, refId) {
         this.eventName = BuyRequestCreatedEvent.name;
         this.authorId = authorId;
         this.packageId = id;
+        this.orderId = orderId;
+        this.price = price;
+        this.mediaLimit = mediaLimit;
+        this.mediaSize = mediaSize;
+        this.paymentMethod = method;
+        this.paymentRef = refId;
     }
 }
 exports.BuyRequestCreatedEvent = BuyRequestCreatedEvent;
 class PackageBoughtEvent {
-    constructor(id, authorId, userId) {
-        this.packageId = id;
-        this.authorId = authorId;
+    constructor(id, endDate) {
+        this.orderId = id;
+        this.endDate = endDate;
+        this.authorId = 'payment-gateway-system';
         this.eventName = PackageBoughtEvent.name;
-        this.userId = userId;
     }
 }
 exports.PackageBoughtEvent = PackageBoughtEvent;

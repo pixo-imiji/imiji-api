@@ -4,59 +4,63 @@ import { UserRole } from './user.role';
 export type UserLoggedIn = IEvent;
 export type UserRefreshedToken = IEvent;
 export interface UserRegistered extends IEvent {
-    email: string;
-    validateId: string;
-    locale: Locale;
-    role: UserRole;
+    readonly email: string;
+    readonly validateId: string;
+    readonly locale: Locale;
+    readonly role: UserRole;
 }
 export interface UserUpdated extends IEvent {
-    locale: Locale;
-    role: UserRole;
+    readonly locale: Locale;
+    readonly role: UserRole;
 }
 export interface UserValidated extends IEvent {
-    validateId: string;
+    readonly validateId: string;
 }
 export interface UserForgotPassword extends IEvent {
-    email: string;
-    resetPasswordId: string;
+    readonly email: string;
+    readonly resetPasswordId: string;
 }
 export declare class UserLoggedInEvent implements UserLoggedIn, IEvent {
-    eventName: string;
-    authorId: string;
+    readonly eventName: string;
+    readonly authorId: string;
     constructor(authorId: string);
 }
 export declare class UserRefreshedTokenEvent implements UserRefreshedToken {
-    authorId: string;
-    eventName: string;
+    readonly authorId: string;
+    readonly eventName: string;
     constructor(authorId: string);
 }
 export declare class UserRegisteredEvent implements UserRegistered {
-    eventName: string;
-    authorId: string;
-    email: string;
-    userId: string;
-    validateId: string;
-    locale: Locale;
-    role: UserRole;
+    readonly eventName: string;
+    readonly authorId: string;
+    readonly email: string;
+    readonly userId: string;
+    readonly validateId: string;
+    readonly locale: Locale;
+    readonly role: UserRole;
     constructor(id: string, email: string, locale: Locale, validateId: string, role: UserRole);
 }
 export declare class UserUpdatedEvent implements UserUpdated {
-    eventName: string;
-    authorId: string;
-    locale: Locale;
-    role: UserRole;
+    readonly eventName: string;
+    readonly authorId: string;
+    readonly locale: Locale;
+    readonly role: UserRole;
     constructor(authorId: string, locale: Locale, role: UserRole);
 }
 export declare class UserValidatedEvent implements UserValidated {
-    eventName: string;
-    authorId: string;
-    validateId: string;
+    readonly eventName: string;
+    readonly authorId: string;
+    readonly validateId: string;
     constructor(authorId: string, validateId: string);
 }
 export declare class UserForgotPasswordEvent implements UserForgotPassword {
-    authorId: string;
-    email: string;
-    eventName: string;
-    resetPasswordId: string;
+    readonly authorId: string;
+    readonly email: string;
+    readonly eventName: string;
+    readonly resetPasswordId: string;
     constructor(authorId: string, email: string, resetPasswordId: string);
+}
+export declare class UserPasswordUpdatedEvent implements IEvent {
+    readonly authorId: string;
+    readonly eventName: string;
 }

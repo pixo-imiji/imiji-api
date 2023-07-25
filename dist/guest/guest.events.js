@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.RoleChangedEvent = exports.GuestRemovedEvent = exports.GuestAddedEvent = void 0;
+exports.GuestRoleChangedEvent = exports.GuestRemovedEvent = exports.GuestAddedEvent = void 0;
 class GuestAddedEvent {
     constructor(id, authorId, email, phone, baseAddress, publicKey, albumId, locale) {
         this.eventName = GuestAddedEvent.name;
@@ -25,13 +25,12 @@ class GuestRemovedEvent {
     }
 }
 exports.GuestRemovedEvent = GuestRemovedEvent;
-class RoleChangedEvent {
-    constructor(email, authorId, albumId, role) {
-        this.eventName = RoleChangedEvent.name;
-        this.email = email;
+class GuestRoleChangedEvent {
+    constructor(id, authorId, role) {
+        this.eventName = GuestRoleChangedEvent.name;
+        this.guestId = id;
         this.authorId = authorId;
-        this.albumId = albumId;
         this.role = role;
     }
 }
-exports.RoleChangedEvent = RoleChangedEvent;
+exports.GuestRoleChangedEvent = GuestRoleChangedEvent;

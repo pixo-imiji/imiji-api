@@ -1,12 +1,12 @@
 import { IEvent } from '../event';
 
 export interface IPackage {
-  packageId: string;
-  name: string;
-  price: number;
-  mediaLimit: number;
-  mediaSize: number;
-  years: number;
+  readonly packageId: string;
+  readonly name: string;
+  readonly price: number;
+  readonly mediaLimit: number;
+  readonly mediaSize: number;
+  readonly years: number;
 }
 
 export interface PackageCreated extends IEvent, IPackage {}
@@ -14,26 +14,29 @@ export interface PackageCreated extends IEvent, IPackage {}
 export interface PackageUpdated extends IEvent, IPackage {}
 
 export interface BuyRequestCreated extends IEvent {
-  packageId: string;
-  orderId: string;
-  paymentRef: string;
-  paymentMethod: string;
-  price: number;
+  readonly packageId: string;
+  readonly orderId: string;
+  readonly paymentRef: string;
+  readonly paymentMethod: string;
+  readonly price: number;
+  readonly mediaLimit: number;
+  readonly mediaSize: number;
 }
 
 export interface PackageBought extends IEvent {
-  orderId: string;
+  readonly orderId: string;
+  readonly endDate: number;
 }
 
 export class PackageCreatedEvent implements PackageCreated {
-  authorId: string;
-  eventName: string;
-  mediaLimit: number;
-  mediaSize: number;
-  name: string;
-  packageId: string;
-  price: number;
-  years: number;
+  readonly authorId: string;
+  readonly eventName: string;
+  readonly mediaLimit: number;
+  readonly mediaSize: number;
+  readonly name: string;
+  readonly packageId: string;
+  readonly price: number;
+  readonly years: number;
 
   constructor(
     id: string,
@@ -56,14 +59,14 @@ export class PackageCreatedEvent implements PackageCreated {
 }
 
 export class PackageUpdatedEvent implements PackageUpdated {
-  authorId: string;
-  eventName: string;
-  mediaLimit: number;
-  mediaSize: number;
-  name: string;
-  packageId: string;
-  price: number;
-  years: number;
+  readonly authorId: string;
+  readonly eventName: string;
+  readonly mediaLimit: number;
+  readonly mediaSize: number;
+  readonly name: string;
+  readonly packageId: string;
+  readonly price: number;
+  readonly years: number;
 
   constructor(
     id: string,
@@ -86,19 +89,23 @@ export class PackageUpdatedEvent implements PackageUpdated {
 }
 
 export class BuyRequestCreatedEvent implements BuyRequestCreated {
-  authorId: string;
-  eventName: string;
-  packageId: string;
-  orderId: string;
-  price: number;
-  paymentMethod: string;
-  paymentRef: string;
+  readonly authorId: string;
+  readonly eventName: string;
+  readonly packageId: string;
+  readonly orderId: string;
+  readonly price: number;
+  readonly mediaLimit: number;
+  readonly mediaSize: number;
+  readonly paymentMethod: string;
+  readonly paymentRef: string;
 
   constructor(
     id: string,
     authorId: string,
     orderId: string,
     price: number,
+    mediaLimit: number,
+    mediaSize: number,
     method: string,
     refId: string,
   ) {
@@ -107,18 +114,22 @@ export class BuyRequestCreatedEvent implements BuyRequestCreated {
     this.packageId = id;
     this.orderId = orderId;
     this.price = price;
+    this.mediaLimit = mediaLimit;
+    this.mediaSize = mediaSize;
     this.paymentMethod = method;
     this.paymentRef = refId;
   }
 }
 
 export class PackageBoughtEvent implements PackageBought {
-  authorId: string;
-  eventName: string;
-  orderId: string;
+  readonly authorId: string;
+  readonly eventName: string;
+  readonly orderId: string;
+  readonly endDate: number;
 
-  constructor(id: string) {
+  constructor(id: string, endDate: number) {
     this.orderId = id;
+    this.endDate = endDate;
     this.authorId = 'payment-gateway-system';
     this.eventName = PackageBoughtEvent.name;
   }

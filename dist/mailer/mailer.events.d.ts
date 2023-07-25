@@ -1,60 +1,88 @@
 import { IEvent } from '../event';
 export interface ValidateAccountMailSent extends IEvent {
-    mail: string;
-    validateId: string;
+    readonly id: string;
+    readonly mail: string;
+    readonly validateId: string;
 }
 export declare class ValidateAccountMailSentEvent implements ValidateAccountMailSent {
-    authorId: string;
-    eventName: string;
-    mail: string;
-    validateId: string;
-    constructor(mail: string, authorId: string, validateId: string);
+    readonly id: string;
+    readonly authorId: string;
+    readonly eventName: string;
+    readonly mail: string;
+    readonly validateId: string;
+    constructor(id: string, mail: string, authorId: string, validateId: string);
+}
+export interface DeleteAccountMailSent extends IEvent {
+    readonly id: string;
+    readonly email: string;
+}
+export declare class DeleteAccountMailSentEvent implements DeleteAccountMailSent {
+    readonly authorId: string;
+    readonly email: string;
+    readonly eventName: string;
+    readonly id: string;
+    constructor(id: string, email: string, authorId: string);
+}
+export interface DownloadLinkSent extends IEvent {
+    readonly id: string;
+    readonly albumId: string;
+    readonly link: string;
+    readonly userId: string;
+}
+export declare class DownloadLinkSentEvent implements DownloadLinkSent {
+    readonly albumId: string;
+    readonly authorId: string;
+    readonly eventName: string;
+    readonly id: string;
+    readonly link: string;
+    readonly userId: string;
+    constructor(id: string, albumId: string, userId: string, authorId: string, link: string);
 }
 export interface InvoicePackageMailSent extends IEvent {
-    mail: string;
-    startDate: number;
-    endDate: number;
-    currency: string;
-    price: string;
+    readonly id: string;
+    readonly orderId: string;
 }
 export declare class InvoicePackageMailSentEvent implements InvoicePackageMailSent {
-    authorId: string;
-    eventName: string;
-    mail: string;
-    currency: string;
-    endDate: number;
-    price: string;
-    startDate: number;
-    constructor(mail: string, authorId: string, startDate: number, endDate: number, price: string, currency: string);
+    readonly id: string;
+    readonly authorId: string;
+    readonly eventName: string;
+    readonly orderId: string;
+    constructor(id: string, orderId: string, authorId: string);
 }
 export interface ResetPasswordMailSent extends IEvent {
-    mail: string;
-    resetPasswordId: string;
+    readonly id: string;
+    readonly mail: string;
+    readonly resetPasswordId: string;
 }
 export declare class ResetPasswordMailSentEvent implements ResetPasswordMailSent {
-    authorId: string;
-    eventName: string;
-    mail: string;
-    resetPasswordId: string;
+    readonly id: string;
+    readonly authorId: string;
+    readonly eventName: string;
+    readonly mail: string;
+    readonly resetPasswordId: string;
     constructor(mail: string, authorId: string, resetPasswordId: string);
 }
 export interface ResetPasswordConfirmMailSent extends IEvent {
-    mail: string;
+    readonly id: string;
+    readonly mail: string;
 }
 export declare class ResetPasswordConfirmMailSentEvent implements ResetPasswordConfirmMailSent {
-    authorId: string;
-    eventName: string;
-    mail: string;
+    readonly id: string;
+    readonly authorId: string;
+    readonly eventName: string;
+    readonly mail: string;
     constructor(mail: string, authorId: string);
 }
 export interface InviteMailSent extends IEvent {
-    mail: string;
-    inviteId: string;
+    readonly id: string;
+    readonly mail: string;
+    readonly inviteId: string;
 }
 export declare class InviteMailSentEvent implements InviteMailSent {
-    authorId: string;
-    mail: string;
-    eventName: string;
-    inviteId: string;
-    constructor(mail: string, authorId: string, inviteId: string);
+    readonly id: string;
+    readonly authorId: string;
+    readonly mail: string;
+    readonly eventName: string;
+    readonly inviteId: string;
+    constructor(id: string, mail: string, authorId: string, inviteId: string);
 }

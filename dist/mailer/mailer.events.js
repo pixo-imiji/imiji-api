@@ -1,8 +1,9 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.InviteMailSentEvent = exports.ResetPasswordConfirmMailSentEvent = exports.ResetPasswordMailSentEvent = exports.InvoicePackageMailSentEvent = exports.ValidateAccountMailSentEvent = void 0;
+exports.InviteMailSentEvent = exports.ResetPasswordConfirmMailSentEvent = exports.ResetPasswordMailSentEvent = exports.InvoicePackageMailSentEvent = exports.DownloadLinkSentEvent = exports.DeleteAccountMailSentEvent = exports.ValidateAccountMailSentEvent = void 0;
 class ValidateAccountMailSentEvent {
-    constructor(mail, authorId, validateId) {
+    constructor(id, mail, authorId, validateId) {
+        this.id = id;
         this.mail = mail;
         this.authorId = authorId;
         this.validateId = validateId;
@@ -10,14 +11,31 @@ class ValidateAccountMailSentEvent {
     }
 }
 exports.ValidateAccountMailSentEvent = ValidateAccountMailSentEvent;
-class InvoicePackageMailSentEvent {
-    constructor(mail, authorId, startDate, endDate, price, currency) {
-        this.mail = mail;
+class DeleteAccountMailSentEvent {
+    constructor(id, email, authorId) {
+        this.id = id;
+        this.eventName = DeleteAccountMailSentEvent.name;
         this.authorId = authorId;
-        this.startDate = startDate;
-        this.endDate = endDate;
-        this.price = price;
-        this.currency = currency;
+        this.email = email;
+    }
+}
+exports.DeleteAccountMailSentEvent = DeleteAccountMailSentEvent;
+class DownloadLinkSentEvent {
+    constructor(id, albumId, userId, authorId, link) {
+        this.id = id;
+        this.albumId = albumId;
+        this.userId = userId;
+        this.authorId = authorId;
+        this.link = link;
+        this.eventName = DownloadLinkSentEvent.name;
+    }
+}
+exports.DownloadLinkSentEvent = DownloadLinkSentEvent;
+class InvoicePackageMailSentEvent {
+    constructor(id, orderId, authorId) {
+        this.id = id;
+        this.orderId = orderId;
+        this.authorId = authorId;
         this.eventName = InvoicePackageMailSentEvent.name;
     }
 }
@@ -40,7 +58,8 @@ class ResetPasswordConfirmMailSentEvent {
 }
 exports.ResetPasswordConfirmMailSentEvent = ResetPasswordConfirmMailSentEvent;
 class InviteMailSentEvent {
-    constructor(mail, authorId, inviteId) {
+    constructor(id, mail, authorId, inviteId) {
+        this.id = id;
         this.mail = mail;
         this.authorId = authorId;
         this.inviteId = inviteId;

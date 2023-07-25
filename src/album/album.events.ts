@@ -2,37 +2,59 @@ import { IEvent } from '../event';
 import { AlbumType } from './album.type';
 
 export interface AlbumCreated extends IEvent {
-  albumId: string;
-  type: AlbumType;
-  name: string;
-  date: number;
+  readonly albumId: string;
+  readonly type: AlbumType;
+  readonly name: string;
+  readonly date: number;
 }
 
 export interface AlbumChapterCreated extends IEvent {
-  albumId: string;
-  chapterId: string;
-  name: string;
-  isPublic: boolean;
+  readonly albumId: string;
+  readonly chapterId: string;
+  readonly name: string;
+  readonly isPublic: boolean;
 }
 
 export interface AlbumRemoved extends IEvent {
-  albumId: string;
+  readonly albumId: string;
 }
 
 export interface AlbumUpdated extends IEvent {
-  albumId: string;
-  type: AlbumType;
-  name: string;
-  date: number;
+  readonly albumId: string;
+  readonly type: AlbumType;
+  readonly name: string;
+  readonly date: number;
+}
+
+export interface AlbumDownLinkCreated extends IEvent {
+  readonly albumId: string;
+  readonly link: string;
+  readonly endDate: number;
+}
+
+export class AlbumDownLinkCreatedEvent implements AlbumDownLinkCreated {
+  readonly albumId: string;
+  readonly authorId: string;
+  readonly endDate: number;
+  readonly eventName: string;
+  readonly link: string;
+
+  constructor(id: string, authorId: string, link: string, endDate: number) {
+    this.albumId = id;
+    this.authorId = authorId;
+    this.link = link;
+    this.endDate = endDate;
+    this.eventName = AlbumDownLinkCreatedEvent.name;
+  }
 }
 
 export class AlbumCreatedEvent implements AlbumCreated {
-  albumId: string;
-  authorId: string;
-  date: number;
-  eventName: string;
-  name: string;
-  type: AlbumType;
+  readonly albumId: string;
+  readonly authorId: string;
+  readonly date: number;
+  readonly eventName: string;
+  readonly name: string;
+  readonly type: AlbumType;
 
   constructor(
     id: string,
@@ -51,12 +73,12 @@ export class AlbumCreatedEvent implements AlbumCreated {
 }
 
 export class AlbumChapterCreatedEvent implements AlbumChapterCreated {
-  albumId: string;
-  chapterId: string;
-  authorId: string;
-  eventName: string;
-  isPublic: boolean;
-  name: string;
+  readonly albumId: string;
+  readonly chapterId: string;
+  readonly authorId: string;
+  readonly eventName: string;
+  readonly isPublic: boolean;
+  readonly name: string;
 
   constructor(
     id: string,
@@ -75,9 +97,9 @@ export class AlbumChapterCreatedEvent implements AlbumChapterCreated {
 }
 
 export class AlbumRemovedEvent implements AlbumRemoved {
-  albumId: string;
-  authorId: string;
-  eventName: string;
+  readonly albumId: string;
+  readonly authorId: string;
+  readonly eventName: string;
 
   constructor(id: string, authorId: string) {
     this.eventName = AlbumRemovedEvent.name;
@@ -87,12 +109,12 @@ export class AlbumRemovedEvent implements AlbumRemoved {
 }
 
 export class AlbumUpdatedEvent implements AlbumUpdated {
-  albumId: string;
-  authorId: string;
-  date: number;
-  eventName: string;
-  name: string;
-  type: AlbumType;
+  readonly albumId: string;
+  readonly authorId: string;
+  readonly date: number;
+  readonly eventName: string;
+  readonly name: string;
+  readonly type: AlbumType;
 
   constructor(
     id: string,

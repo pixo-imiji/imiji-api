@@ -4,54 +4,83 @@ import { MediaFormat } from './media.format';
 import { MediaDoAction } from './media.action';
 
 export interface MediaUploaded extends IEvent {
-  mediaId: string;
-  type: MediaType;
-  albumId: string;
-  chapterId: string;
-  fileName: string;
-  size: number;
-  format: MediaFormat;
+  readonly mediaId: string;
+  readonly type: MediaType;
+  readonly albumId: string;
+  readonly chapterId: string;
+  readonly fileName: string;
+  readonly size: number;
+  readonly format: MediaFormat;
 }
 
 export interface MediaRemoved extends IEvent {
-  mediaId: string;
-  type: MediaType;
-  albumId: string;
-  chapterId: string;
-  fileName: string;
-  size: number;
-  formats: MediaFormat[];
+  readonly mediaId: string;
+  readonly type: MediaType;
+  readonly albumId: string;
+  readonly chapterId: string;
+  readonly fileName: string;
+  readonly size: number;
+  readonly formats: MediaFormat[];
 }
 
 export interface MediaAlbumResized extends IEvent {
-  mediaId: string;
-  albumId: string;
-  fileName: string;
-  format: MediaFormat;
-  size: number;
+  readonly mediaId: string;
+  readonly albumId: string;
+  readonly fileName: string;
+  readonly format: MediaFormat;
+  readonly size: number;
 }
 
 export interface MediaDidAction extends IEvent {
-  albumId: string;
-  mediaId: string;
-  action: MediaDoAction;
+  readonly albumId: string;
+  readonly mediaId: string;
+  readonly action: MediaDoAction;
 }
 
 export interface MediaAvatarResized extends IEvent {
-  id: string;
-  format: MediaFormat;
+  readonly id: string;
+  readonly format: MediaFormat;
+}
+
+export interface MediaDownloadItemsSelected extends IEvent {
+  readonly mediaIds: string[];
+  readonly isAllMedia: boolean;
+  readonly albumId: string;
+}
+
+export class MediaDownloadItemsSelectedEvent
+  implements MediaDownloadItemsSelected
+{
+  readonly albumId: string;
+  readonly authorId: string;
+  readonly eventName: string;
+  readonly isAllMedia: boolean;
+  readonly mediaIds: string[];
+
+  constructor(
+    id: string,
+    authorId: string,
+    isAll: boolean,
+    mediaIds: string[],
+  ) {
+    this.albumId = id;
+    this.authorId = authorId;
+    this.isAllMedia = isAll;
+    this.mediaIds = mediaIds;
+    this.eventName = MediaDownloadItemsSelectedEvent.name;
+  }
 }
 
 export class MediaUploadedEvent implements MediaUploaded {
-  albumId: string;
-  chapterId: string;
-  mediaId: string;
-  type: MediaType;
-  fileName: string;
-  format: MediaFormat;
-  authorId: string;
-  eventName: string;
-  size: number;
+  readonly albumId: string;
+  readonly chapterId: string;
+  readonly mediaId: string;
+  readonly type: MediaType;
+  readonly fileName: string;
+  readonly format: MediaFormat;
+  readonly authorId: string;
+  readonly eventName: string;
+  readonly size: number;
 
   constructor(
     id: string,
@@ -81,15 +110,15 @@ export class MediaUploadedEvent implements MediaUploaded {
 }
 
 export class MediaRemovedEvent implements MediaRemoved {
-  authorId: string;
-  eventName: string;
-  mediaId: string;
-  albumId: string;
-  chapterId: string;
-  fileName: string;
-  type: MediaType;
-  formats: MediaFormat[];
-  size: number;
+  readonly authorId: string;
+  readonly eventName: string;
+  readonly mediaId: string;
+  readonly albumId: string;
+  readonly chapterId: string;
+  readonly fileName: string;
+  readonly type: MediaType;
+  readonly formats: MediaFormat[];
+  readonly size: number;
 
   constructor(
     id: string,
@@ -114,13 +143,13 @@ export class MediaRemovedEvent implements MediaRemoved {
 }
 
 export class MediaAlbumResizedEvent implements MediaAlbumResized {
-  albumId: string;
-  authorId: string;
-  eventName: string;
-  mediaId: string;
-  fileName: string;
-  format: MediaFormat;
-  size: number;
+  readonly albumId: string;
+  readonly authorId: string;
+  readonly eventName: string;
+  readonly mediaId: string;
+  readonly fileName: string;
+  readonly format: MediaFormat;
+  readonly size: number;
 
   constructor(
     id: string,
@@ -146,10 +175,10 @@ export class MediaAlbumResizedEvent implements MediaAlbumResized {
 }
 
 export class MediaAvatarResizedEvent implements MediaAvatarResized {
-  authorId: string;
-  eventName: string;
-  format: MediaFormat;
-  id: string;
+  readonly authorId: string;
+  readonly eventName: string;
+  readonly format: MediaFormat;
+  readonly id: string;
 
   constructor(id: string, authorId: string, format: MediaFormat) {
     this.id = id;
@@ -165,11 +194,11 @@ export class MediaAvatarResizedEvent implements MediaAvatarResized {
 }
 
 export class MediaDidActionEvent implements MediaDidAction {
-  action: MediaDoAction;
-  authorId: string;
-  eventName: string;
-  albumId: string;
-  mediaId: string;
+  readonly action: MediaDoAction;
+  readonly authorId: string;
+  readonly eventName: string;
+  readonly albumId: string;
+  readonly mediaId: string;
 
   constructor(
     id: string,

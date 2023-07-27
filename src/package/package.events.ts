@@ -15,10 +15,12 @@ export interface PackageUpdated extends IEvent, IPackage {}
 
 export interface BuyRequestCreated extends IEvent {
   readonly packageId: string;
+  readonly name: string;
   readonly orderId: string;
   readonly paymentRef: string;
   readonly paymentMethod: string;
   readonly price: number;
+  readonly discount: number;
   readonly mediaLimit: number;
   readonly mediaSize: number;
 }
@@ -92,8 +94,10 @@ export class BuyRequestCreatedEvent implements BuyRequestCreated {
   readonly authorId: string;
   readonly eventName: string;
   readonly packageId: string;
+  readonly name: string;
   readonly orderId: string;
   readonly price: number;
+  readonly discount: number;
   readonly mediaLimit: number;
   readonly mediaSize: number;
   readonly paymentMethod: string;
@@ -101,9 +105,11 @@ export class BuyRequestCreatedEvent implements BuyRequestCreated {
 
   constructor(
     id: string,
+    packageName: string,
     authorId: string,
     orderId: string,
     price: number,
+    discount: number,
     mediaLimit: number,
     mediaSize: number,
     method: string,
@@ -112,6 +118,7 @@ export class BuyRequestCreatedEvent implements BuyRequestCreated {
     this.eventName = BuyRequestCreatedEvent.name;
     this.authorId = authorId;
     this.packageId = id;
+    this.name = packageName;
     this.orderId = orderId;
     this.price = price;
     this.mediaLimit = mediaLimit;

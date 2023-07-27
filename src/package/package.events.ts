@@ -16,6 +16,7 @@ export interface PackageUpdated extends IEvent, IPackage {}
 export interface BuyRequestCreated extends IEvent {
   readonly packageId: string;
   readonly name: string;
+  readonly date: number;
   readonly orderId: string;
   readonly paymentRef: string;
   readonly paymentMethod: string;
@@ -96,6 +97,7 @@ export class BuyRequestCreatedEvent implements BuyRequestCreated {
   readonly packageId: string;
   readonly name: string;
   readonly orderId: string;
+  readonly date: number;
   readonly price: number;
   readonly discount: number;
   readonly mediaLimit: number;
@@ -108,6 +110,7 @@ export class BuyRequestCreatedEvent implements BuyRequestCreated {
     packageName: string,
     authorId: string,
     orderId: string,
+    date: number,
     price: number,
     discount: number,
     mediaLimit: number,
@@ -119,8 +122,10 @@ export class BuyRequestCreatedEvent implements BuyRequestCreated {
     this.authorId = authorId;
     this.packageId = id;
     this.name = packageName;
+    this.date = date;
     this.orderId = orderId;
     this.price = price;
+    this.discount = discount;
     this.mediaLimit = mediaLimit;
     this.mediaSize = mediaSize;
     this.paymentMethod = method;

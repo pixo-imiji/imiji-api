@@ -21,6 +21,7 @@ export interface BuyRequestCreated extends IEvent {
   readonly paymentRef: string;
   readonly paymentMethod: string;
   readonly price: number;
+  readonly years: number;
   readonly discount: number;
   readonly mediaLimit: number;
   readonly mediaSize: number;
@@ -99,6 +100,7 @@ export class BuyRequestCreatedEvent implements BuyRequestCreated {
   readonly orderId: string;
   readonly date: number;
   readonly price: number;
+  readonly years: number;
   readonly discount: number;
   readonly mediaLimit: number;
   readonly mediaSize: number;
@@ -112,6 +114,7 @@ export class BuyRequestCreatedEvent implements BuyRequestCreated {
     orderId: string,
     date: number,
     price: number,
+    years: number,
     discount: number,
     mediaLimit: number,
     mediaSize: number,
@@ -125,6 +128,7 @@ export class BuyRequestCreatedEvent implements BuyRequestCreated {
     this.date = date;
     this.orderId = orderId;
     this.price = price;
+    this.years = years;
     this.discount = discount;
     this.mediaLimit = mediaLimit;
     this.mediaSize = mediaSize;

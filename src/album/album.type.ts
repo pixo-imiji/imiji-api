@@ -1,5 +1,5 @@
 export enum AlbumType {
-  WEEDING = 'WEEDING',
+  WEDDING = 'WEDDING',
   VACATION = 'VACATION',
   COMPANY = 'COMPANY',
   BIRTHDAY = 'BIRTHDAY',
